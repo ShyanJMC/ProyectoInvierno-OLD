@@ -15,7 +15,7 @@ That proyect is for an minimal and small container for pentesting propuses. host
 The same is based in Parrot Sec Linux. <br />
 
 ### How to build (run as root); <br />
-git clone https://github.com/ShyanJMC/ProyectoInvierno.git && cd ProyectoInvierno && mv Invierno_pentesting_dockerfile Dockerfile && docker build -t proyectoinvierno/pentestingcontainer . && docker run -ti -h Invierno_pentesting proyectoinvierno/pentestingcontainer
+git clone https://github.com/ShyanJMC/ProyectoInvierno.git && cd ProyectoInvierno && mv Invierno_pentesting_dockerfile Dockerfile && docker build -t shyanjmc/proyectoinvierno_pentestingcontainer . && docker run -ti -h Invierno_pentesting shyanjmc/proyectoinvierno_pentestingcontainer
 
 <br />
 ##### Use for your own propuses and responsability.
