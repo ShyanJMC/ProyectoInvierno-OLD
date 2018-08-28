@@ -1,5 +1,5 @@
 # ProyectoInvierno
-Personal project for docker's containers and an custom Arch Linux. 
+Personal project for docker's containers and an custom Arch Linux that will integrate them.
 
 ## The same is composed by;
 -Frozen Linux; <br /> an custom Arch Linux for use as base for this project. <br /><br />
@@ -11,11 +11,9 @@ Personal project for docker's containers and an custom Arch Linux.
 -[Moby]=https://mobyproject.org/ <br />
 
 ## Pentesting Invierno;
-That proyect is for an minimal and small container for pentesting propuses. hostname dockerfile<br />
-The same is based in Parrot Sec Linux. <br />
+That proyect is for an minimal and small container for pentesting proposes. <br />
+The same is based in Parrot Sec Linux repositories. <br />
 
 ### How to build (run as root); <br />
-git clone https://github.com/ShyanJMC/ProyectoInvierno.git && cd ProyectoInvierno && mv Invierno_pentesting_dockerfile Dockerfile && docker build -t shyanjmc/proyectoinvierno_pentestingcontainer . && docker run -ti -h Invierno_pentesting shyanjmc/proyectoinvierno_pentestingcontainer
-
-<br />
-##### Use for your own propuses and responsability.
+git clone https://github.com/ShyanJMC/ProyectoInvierno.git && cd ProyectoInvierno && mv Invierno_pentesting_dockerfile Dockerfile && docker build -t shyanjmc/proyectoinvierno_pentestingcontainer . && docker run -ti -h Invierno_pentesting shyanjmc/proyectoinvierno_pentestingcontainer <br />
+#### Use for your own proposes and responsability.
