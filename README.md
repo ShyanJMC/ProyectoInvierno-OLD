@@ -2,8 +2,10 @@
 Personal project for docker's containers and an custom Arch Linux that will integrate them into an custom shell and environment.
 
 ## The same is composed by;
--BlackOS Linux (code name; FrozenLinux); <br /> an custom Arch Linux for use as base for this project. <br /><br />
--Docker's containers; <br /> they will include all my personal projects. <br /><br />
+-BlackOS Linux (code name; FrozenLinux); <br /> An custom Arch Linux for use as base for this project. <br /><br />
+-Docker's containers; <br /> They will include all my personal projects. The same are; <br /><br />
+ -Pentesting Invierno. <br />
+   -Tor Invierno. <br /><br />
 ## Requeriments
 -Gcc <br />
 -Docker <br />
