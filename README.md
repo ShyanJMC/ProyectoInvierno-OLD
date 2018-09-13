@@ -23,6 +23,7 @@ git clone https://github.com/ShyanJMC/ProyectoInvierno.git && cd ProyectoInviern
 #### Use for your own proposes and responsability.
 
 ## Tor Invierno;
+![Tor ARM](https://github.com/ShyanJMC/ProyectoInvierno/blob/master/screenshots/Screenshot.png)
 This version of Tor is configured in an basic configuration to be managmented by Tor-ARM, an monitoring tool for control and check a lot of aspecs of the onion network.
 Use Tor for own proposes and responsability, none of Invierno's team will take responsability about the actions taked using Tor.
 
