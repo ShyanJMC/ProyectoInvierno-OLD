@@ -1,0 +1,16 @@
+#### Proyecto Invierno
+#### DockerFile for HTTP protocol proxy.
+
+FROM debian:latest
+MAINTAINER ShyanJMC (nothing_to_do@domain.com)
+
+##Steps to update and upgrade.
+RUN apt update && apt upgrade
+
+## Steps to install.
+RUN apt install -y privoxy
+
+## Steps to custom.
+
+## Steps to run.
+RUN echo "/etc/init.d/privoxy start" >> ~/.bashrc
