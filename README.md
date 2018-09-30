@@ -3,17 +3,19 @@ Personal project for docker's containers and an custom Arch Linux that will inte
 
 ## The same is composed by;
 -BlackOS Linux (code name; FrozenLinux); <br /> An custom Arch Linux for use as base for this project. <br /><br />
+-Invierno Shell; <br /> An custom Shell with inits checks.<br /><br />
 -Docker's containers; <br /> They will include all my personal projects (in alpha at today). The same are; <br /><br />
- -Pentesting Invierno. <br />
-   -Tor Invierno. <br />
-   -Privoxy Invierno. <br/><br />
-## Requeriments
+ &nbsp;&nbsp;&nbsp; -Pentesting Invierno. <br />
+ &nbsp;&nbsp;&nbsp; -Tor Invierno. <br />
+ &nbsp;&nbsp;&nbsp; -Privoxy Invierno. <br/><br />
+## Requeriments ( for now, I'm including the dependencies inside the core directory);
 -Gcc <br />
 -Docker <br />
 ## Credits and CopyRight;
 -[ArchLinux]=https://www.archlinux.org/ <br />
 -[Docker]=https://www.docker.com/ <br />
 -[Moby]=https://mobyproject.org/ <br />
+-[GNU]=https://www.gnu.org/<br />
 
 ## Pentesting Invierno;
 ![Invnierno-pentesting](https://github.com/ShyanJMC/ProyectoInvierno/blob/master/screenshots/Screenshot2.png)
