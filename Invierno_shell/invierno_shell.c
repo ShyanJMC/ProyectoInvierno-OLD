@@ -21,6 +21,7 @@ struct Information {
 	int core_invierno_bash;
 	int internal_ip_address;
 	int docker;
+	int invierno_container;
 	int updated;
 }Init1;
 
@@ -65,10 +66,12 @@ return 0;
 }
 
 /*
-Checks docker and start it
+Checks docker and start it.
+After a successful start, check the configuration
 */
 int docker_init (){
-    int temporal;
+    int temporal,
+    	  temporal2;
     printf("Enabling and starting docker.\n");
     temporal = system("systemctl start docker > /dev/null && systemctl enable docker > /dev/null");
     if (temporal != 0){
@@ -79,6 +82,17 @@ int docker_init (){
     else{
     	printf("[OK]\tDocker started.\n");
     	Init1.docker = 0;
+    	printf("Checking invierno's container configuration.\n");
+    	temporal2 = system("/var/lib/invierno/core/grep DCK=0 /etc/invierno > /dev/null");
+    	if (temporal2 != 0){
+    		printf("[FAIL]\tInvierno's container disabled.\n");
+    		Init1.invierno_container = 1;
+    		return 1;
+    	}
+    	else{
+    		printf("[OK]\tInvierno's container enabled. Checking and building.\n");
+    		Init1.invierno_container = 0;
+    	}
     }
     return 0;
 }

@@ -8,6 +8,7 @@ echo "Making configuration files..."
 cp Invierno_shell/inviernorc /etc/inviernorc
 touch /etc/invierno
 echo "BSH=0" >> /etc/invierno
+echo "DCK=1" >> /etc/invierno
 
 echo "-------------"
 echo "Compiling core utils..."
