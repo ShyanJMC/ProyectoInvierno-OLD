@@ -17,7 +17,7 @@ cd src/
 ls | grep -Ev ".h|.c|.mk|blake2|dcgen" | xargs cp -t ../../
 mkdir /var/lib/invierno/core
 ls ../../../core/ | grep -v coreutils-8.30 | xargs cp -t /var/lib/invierno/core
-
+cp -r ../../../../Images /var/lib/invierno
 
 echo "-------------"
 echo "Compiling shell....."

@@ -65,6 +65,7 @@ return 0;
 Execute the functions and check the return of the same.
 */
 int main( int first_arg, char **second_arg){
+	system("clear");
 	printf("Starting Invierno.\n");
 	printf("Checking core programs.\n");
     simple_check();
