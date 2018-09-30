@@ -1,0 +1,15 @@
+# This file is part of ProyectoInvierno.
+# The same is licensed by GPL v3.
+#
+# Invierno Shell configuration file.
+# 
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias ll='ls -la --color=auto'
+alias la='ls -la --color=auto'
+
+
+PS1='[Invierno Return: $(echo $?)][\u@\h \W]\$ '
