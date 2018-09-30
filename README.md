@@ -1,6 +1,6 @@
 # ProyectoInvierno
 Personal project for docker's containers and an custom Arch Linux that will integrate them into an custom shell and environment. <br />
-None source code file from coreutils (the GNU utilities) were modified.<br />
+<br />
 
 ## The same is composed by;
 -BlackOS Linux; <br /> An custom Arch Linux for use as base for this project. <br /><br />
@@ -22,7 +22,7 @@ None source code file from coreutils (the GNU utilities) were modified.<br />
 -[Roy's Place]=https://roy.marples.name/<br />
 
 ## Pentesting Invierno;
-![Invnierno-pentesting](https://github.com/ShyanJMC/ProyectoInvierno/blob/master/screenshots/Screenshot2.png)
+![Invnierno-pentesting](https://github.com/ShyanJMC/ProyectoInvierno/blob/master/screenshots/Screenshot2.png) <br />
 That proyect is for an minimal and small container for pentesting proposes. <br />
 The same is based in Parrot Sec Linux repositories. <br />
 
@@ -31,7 +31,7 @@ git clone https://github.com/ShyanJMC/ProyectoInvierno.git && cd ProyectoInviern
 #### Use for your own proposes and responsability.
 
 ## Tor Invierno;
-![Tor ARM](https://github.com/ShyanJMC/ProyectoInvierno/blob/master/screenshots/Screenshot.png)
+![Tor ARM](https://github.com/ShyanJMC/ProyectoInvierno/blob/master/screenshots/Screenshot.png) <br />
 This version of Tor is configured in an basic configuration to be managmented by Tor-ARM, an monitoring tool for control and check a lot of aspecs of the onion network.
 Use Tor for own proposes and responsability, none of Invierno's team will take responsability about the actions taked using Tor.
 
