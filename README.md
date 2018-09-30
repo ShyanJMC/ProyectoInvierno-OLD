@@ -3,7 +3,7 @@ Personal project for docker's containers and an custom Arch Linux that will inte
 None source code file from coreutils (the GNU utilities) were modified.<br />
 
 ## The same is composed by;
--BlackOS Linux (code name; FrozenLinux); <br /> An custom Arch Linux for use as base for this project. <br /><br />
+-BlackOS Linux; <br /> An custom Arch Linux for use as base for this project. <br /><br />
 -Invierno Shell; <br /> An custom Shell with inits checks.<br /><br />
 -Docker's containers; <br /> They will include all my personal projects (in alpha at today). The same are; <br /><br />
  &nbsp;&nbsp;&nbsp; -Pentesting Invierno. <br />

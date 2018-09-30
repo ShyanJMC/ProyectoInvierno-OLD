@@ -13,3 +13,4 @@ alias la='ls -la --color=auto'
 
 
 PS1='[Invierno Return: $(echo $?)][\u@\h \W]\$ '
+cd ~
