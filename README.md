@@ -11,6 +11,8 @@ Personal project for docker's containers and an custom Arch Linux that will inte
 ## Requeriments ( for now, I'm including the dependencies inside the core directory);
 -Gcc <br />
 -Docker <br />
+-Dhcpcd <br />
+-Dhclient <br /><br />
 ## Credits and CopyRight;
 -[ArchLinux]=https://www.archlinux.org/ <br />
 -[Docker]=https://www.docker.com/ <br />
