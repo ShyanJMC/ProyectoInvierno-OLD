@@ -1,0 +1,5 @@
+lib/af_alg.o: lib/af_alg.c /usr/include/stdc-predef.h lib/config.h
+
+/usr/include/stdc-predef.h:
+
+lib/config.h:
