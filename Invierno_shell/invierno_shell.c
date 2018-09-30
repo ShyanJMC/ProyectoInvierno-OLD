@@ -1,6 +1,6 @@
 /*
 Invierno SHELL.
-Version 0.0.1 ALPHA
+Version 0.0.2 ALPHA
 Licensed in GPL v3.
 
 Developed by ShyanJMC.
@@ -19,6 +19,7 @@ struct Information {
 	int core_files;
 	int environment;
 	int core_invierno_bash;
+	int internal_ip_address;
 }Init1;
 
 /*
@@ -73,6 +74,14 @@ int main( int first_arg, char **second_arg){
 	environment();
 	if (Init1.environment != 0){
 		return 1;
+	}
+	printf("Assigning internal IP adress.\n");
+	Init1.internal_ip_address = system("dhclient");
+	if(Init1.internal_ip_address != 0){
+		printf("[FAIL]\tAuto assign IP adress.\n");
+	}
+	else{
+		printf("[OK]\tAuto assign IP adress.\n");
 	}
     system("/var/lib/invierno/core/bash --init-file /etc/inviernorc");
 	return 0;
