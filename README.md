@@ -3,16 +3,19 @@ Personal project for docker's containers and an custom Arch Linux that will inte
 <br />
 
 ## The same is composed by;
--BlackOS Linux; <br /> An custom Arch Linux for use as base for this project. <br /><br />
--Invierno Shell; <br /> An custom Shell with inits checks.<br /><br />
+-BlackOS Linux; <br /> A custom Arch Linux for use as base for this project. <br /><br />
+-Invierno Shell; <br /> A custom Shell with inits checks and independient from the distribution.<br /><br />
 -Docker's containers; <br /> They will include all my personal projects (in alpha at today). The same are; <br /><br />
  &nbsp;&nbsp;&nbsp; -Pentesting Invierno. <br />
  &nbsp;&nbsp;&nbsp; -Tor Invierno. <br />
  &nbsp;&nbsp;&nbsp; -Privoxy Invierno. <br/><br />
+
 ## Requeriments ( for now, I'm including the dependencies inside the core directory);
 -Gcc <br />
 -Docker <br />
 -Dhcpcd <br />
+-Automake <br />
+-Autoconf <br />
 -Dhclient <br /><br />
 ## Credits and CopyRight;
 -[ArchLinux]=https://www.archlinux.org/ <br />
@@ -26,6 +29,9 @@ Personal project for docker's containers and an custom Arch Linux that will inte
 This is a custom shell for Gnu/Linux that have all dependencies integrated in /var/lib/invierno folder.<br />
 This shell check at the init all needed services and the requeriments of ProyectoInvierno, setting automatically IP address, Invierno's containers, shell configuration and auto update of the system.<br />
 
+### How to build (run as root); <br />
+cd ~ && git clone https://github.com/ShyanJMC/ProyectoInvierno.git && cd ProyectoInvierno/ && bash +x init_instalation_and_compilation.sh
+<br />
 ## Pentesting Invierno;
 ![Invnierno-pentesting](https://github.com/ShyanJMC/ProyectoInvierno/blob/master/screenshots/Screenshot2.png) <br />
 That proyect is for an minimal and small container for pentesting proposes. <br />
@@ -33,7 +39,7 @@ The same is based in Parrot Sec Linux repositories. <br />
 
 ### How to build (run as root); <br />
 git clone https://github.com/ShyanJMC/ProyectoInvierno.git && cd ProyectoInvierno/Images && mv Invierno_pentesting_dockerfile Dockerfile && docker build -t shyanjmc/proyectoinvierno_pentestingcontainer . && docker run -ti -h Invierno_pentesting shyanjmc/proyectoinvierno_pentestingcontainer <br />
-#### Use for your own proposes and responsability.
+#### Use for your own proposes and responsability.<br />
 
 ## Tor Invierno;
 ![Tor ARM](https://github.com/ShyanJMC/ProyectoInvierno/blob/master/screenshots/Screenshot.png) <br />

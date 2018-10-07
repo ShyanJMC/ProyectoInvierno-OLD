@@ -13,6 +13,7 @@ echo "DCK=1" >> /etc/invierno
 echo "-------------"
 echo "Compiling core utils..."
 cd Invierno_shell/core/coreutils-8.30/
+./configure
 make
 cd src/
 mkdir -p /var/lib/invierno/core
@@ -25,7 +26,7 @@ cp -r ../../../../Images /var/lib/invierno
 
 echo "-------------"
 echo "Compiling BASH and Grep"
-cd ../../bas-4.4.18/
+cd ../../bash-4.4.18/
 ./configure
 make
 cp bash /var/lib/invierno/core
@@ -38,10 +39,9 @@ cp src/fgrep /var/lib/invierno/core
 
 echo "-------------"
 echo "Compiling shell....."
-cd ../../../
+cd ../../
 gcc invierno_shell.c -o invierno_shell
 cp invierno_shell /usr/bin/
 
-
-clear
+echo
 echo "Done"
