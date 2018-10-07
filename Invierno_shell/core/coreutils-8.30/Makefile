@@ -2680,7 +2680,7 @@ BITSIZEOF_WINT_T =
 BYTESWAP_H = 
 CC = gcc
 CCDEPMODE = depmode=gcc3
-CFLAGS = -g -O2
+CFLAGS = -g -O2 -march=native
 CONFIG_INCLUDE = lib/config.h
 CPP = gcc -E
 CPPFLAGS = 

@@ -161,7 +161,8 @@ GCC_LINT_FLAGS = -O -Wall -Wshadow -Wpointer-arith -Wcast-qual -Wno-parentheses 
 		 -Wcast-align -Wstrict-prototypes -Wconversion -Wformat \
 		 -Wformat-nonliteral -Wmissing-braces -Wuninitialized \
 		 -Wmissing-declarations  -Winline \
-		 -Wmissing-prototypes -Wtraditional -Wredundant-decls -pedantic
+		 -Wmissing-prototypes -Wtraditional -Wredundant-decls -pedantic \
+		 -march=native
 
 GCC_LINT_CFLAGS = $(BASE_CCFLAGS) $(CPPFLAGS) $(GCC_LINT_FLAGS)
 
