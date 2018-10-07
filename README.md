@@ -30,11 +30,12 @@ Based on the aforementioned, I only modify the form of installation of these too
 -Autoconf <br />
 -Dhclient <br /><br />
 ## Credits and CopyRight;
--[ArchLinux]=https://www.archlinux.org/ <br />
--[Docker]=https://www.docker.com/ <br />
--[Moby]=https://mobyproject.org/ <br />
--[GNU]=https://www.gnu.org/<br />
--[Roy's Place]=https://roy.marples.name/<br />
+-![ArchLinux](https://www.archlinux.org/)<br />
+-![Docker](https://www.docker.com/) <br />
+-![Moby](https://mobyproject.org/) <br />
+-![GNU](https://www.gnu.org/)<br />
+-![Roy's Place](https://roy.marples.name/)<br />
+-![Parrot Linux Security](https://www.parrotsec.org/)<br />
 
 ## Invierno Shell
 ![Invierno-shell](https://github.com/ShyanJMC/ProyectoInvierno/blob/master/screenshots/Invierno_shell_screenshot.png) <br />
