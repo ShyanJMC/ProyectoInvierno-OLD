@@ -32,7 +32,7 @@ inside the Invierno's directory.
 int simple_check(){
 	Init1.core_files = system("/var/lib/invierno/core/ls . > /dev/null");
 	if (Init1.core_files != 0){
-		printf("[FAIL]\tCore failes are damaged or missing.\n");
+		fprintf(stderr,"[FAIL]\tCore failes are damaged or missing.\n");
 		return Init1.core_files = 1;
 	}
 	else {
@@ -49,14 +49,14 @@ int environment(){
 	 printf("Checking environment file.\n");
 	 Init1.environment  = system("/var/lib/invierno/core/ls /etc/invierno > /dev/null");
 	if (Init1.environment != 0){
-		printf("[FAIL]\tInvierno configuration missing.\n");
+		fprintf(stderr,"[FAIL]\tInvierno configuration missing.\n");
 		return 1;
 	}
 	printf("[OK]\tEnvironment file.\n");
 	 printf("Checking if Bash is enable for the user.\n");
 	 Init1.core_invierno_bash = system("/var/lib/invierno/core/grep BSH=0 /etc/invierno > /dev/null");
 	 if(Init1.core_invierno_bash != 0){
-	 	printf("[FAIL]\tBash for user is disabled.\n");
+	 	fprintf(stderr,"[FAIL]\tBash for user is disabled.\n");
 	 	return 1;
 	 }
 	 else {
@@ -75,7 +75,7 @@ int docker_init (){
     printf("Enabling and starting docker.\n");
     temporal = system("systemctl start docker > /dev/null && systemctl enable docker > /dev/null");
     if (temporal != 0){
-        printf("[FAIL]\tDocker start error.\n");
+        fprintf(stderr,"[FAIL]\tDocker start error.\n");
         Init1.docker = 1;
         return 1;
     }
@@ -85,7 +85,7 @@ int docker_init (){
     	printf("Checking invierno's container configuration.\n");
     	temporal2 = system("/var/lib/invierno/core/grep DCK=0 /etc/invierno > /dev/null");
     	if (temporal2 != 0){
-    		printf("[FAIL]\tInvierno's container disabled.\n");
+    		fprintf(stderr,"[FAIL]\tInvierno's container disabled.\n");
     		Init1.invierno_container = 1;
     		return 1;
     	}
@@ -108,7 +108,7 @@ int update(){
 	printf("Updating the system.\n");
 	buffer = system("yes | pacman -Syu > /dev/null 2> /dev/null");
 	if (buffer != 0){
-		printf("[FAIL]\tError to update the system.\n");
+		fprintf(stderr,"[FAIL]\tError to update the system.\n");
 		Init1.updated = 1;
 	}
 	else {
@@ -136,7 +136,7 @@ int main( int first_arg, char **second_arg){
 	printf("Assigning internal IP adress.\n");
 	Init1.internal_ip_address = system("dhclient");
 	if(Init1.internal_ip_address != 0){
-		printf("[FAIL]\tAuto assign IP adress.\n");
+		fprintf(stderr,"[FAIL]\tAuto assign IP adress.\n");
 	}
 	else{
 		printf("[OK]\tAuto assign IP adress.\n");
