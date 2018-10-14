@@ -40,7 +40,7 @@ Based on the aforementioned, I only modify the form of installation of these too
 ## Invierno Shell
 ![Invierno-shell](https://github.com/ShyanJMC/ProyectoInvierno/blob/master/screenshots/Invierno_shell_screenshot.png) <br />
 This is a custom shell for Gnu/Linux that have all dependencies integrated in /var/lib/invierno folder.<br />
-This shell check at the init all needed services and the requeriments of ProyectoInvierno, setting automatically IP address, Invierno's containers, shell configuration and auto update of the system (and another things).<br />
+This shell check at the init all needed services and the requeriments of ProyectoInvierno, setting automatically IP address, Invierno's containers, shell configuration and auto update of the system (and another things), all in different threads (4 in total).<br />
 
 ### How to build (run as root); <br />
 cd ~ && git clone https://github.com/ShyanJMC/ProyectoInvierno.git && cd ProyectoInvierno/ && bash +x init_instalation_and_compilation.sh
