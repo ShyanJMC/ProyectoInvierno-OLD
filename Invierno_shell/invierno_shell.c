@@ -8,7 +8,7 @@ Developed by ShyanJMC.
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
+#include<pthread.h>
 /*
 Store for information about the program.
 1 is errror.
@@ -23,21 +23,22 @@ struct Information {
 	int docker;
 	int invierno_container;
 	int updated;
+	int pthreads;
 }Init1;
 
 /*
 A simple check to corroborate if the Bash's core utilities are
 inside the Invierno's directory.
 */
-int simple_check(){
+void *simple_check(){
 	Init1.core_files = system("/var/lib/invierno/core/ls . > /dev/null");
 	if (Init1.core_files != 0){
 		fprintf(stderr,"[FAIL]\tCore failes are damaged or missing.\n");
-		return Init1.core_files = 1;
+		Init1.core_files = 1;
 	}
 	else {
 		printf("[OK]\tCore files.\n");
-		return Init1.core_files = 0;
+		Init1.core_files = 0;
 	}
 }
 
@@ -45,31 +46,28 @@ int simple_check(){
 Check the configuration of the environment.
 
 */
-int environment(){
+void *environment(){
 	 printf("Checking environment file.\n");
 	 Init1.environment  = system("/var/lib/invierno/core/ls /etc/invierno > /dev/null");
 	if (Init1.environment != 0){
 		fprintf(stderr,"[FAIL]\tInvierno configuration missing.\n");
-		return 1;
 	}
 	printf("[OK]\tEnvironment file.\n");
 	 printf("Checking if Bash is enable for the user.\n");
 	 Init1.core_invierno_bash = system("/var/lib/invierno/core/grep BSH=0 /etc/invierno > /dev/null");
 	 if(Init1.core_invierno_bash != 0){
 	 	fprintf(stderr,"[FAIL]\tBash for user is disabled.\n");
-	 	return 1;
 	 }
 	 else {
 	 	printf("[OK]\tBash enabled.\n");
 	 }
-return 0;
 }
 
 /*
 Checks docker and start it.
 After a successful start, check the configuration
 */
-int docker_init (){
+void *docker_init (){
     int temporal,
     	  temporal2;
     printf("Enabling and starting docker.\n");
@@ -77,7 +75,6 @@ int docker_init (){
     if (temporal != 0){
         fprintf(stderr,"[FAIL]\tDocker start error.\n");
         Init1.docker = 1;
-        return 1;
     }
     else{
     	printf("[OK]\tDocker started.\n");
@@ -87,14 +84,12 @@ int docker_init (){
     	if (temporal2 != 0){
     		fprintf(stderr,"[FAIL]\tInvierno's container disabled.\n");
     		Init1.invierno_container = 1;
-    		return 1;
-    	}
+       	}
     	else{
     		printf("[OK]\tInvierno's container enabled. Checking and building.\n");
     		Init1.invierno_container = 0;
     	}
     }
-    return 0;
 }
 
 /*
@@ -103,7 +98,7 @@ Is very simple but is very neccesary keep the system updated with
 the last security updates.
 */
 
-int update(){
+void *update(){
 	int buffer;
 	printf("Updating the system.\n");
 	buffer = system("yes | pacman -Syu > /dev/null 2> /dev/null");
@@ -122,14 +117,26 @@ int update(){
 Execute the functions and check the return of the same.
 */
 int main( int first_arg, char **second_arg){
+	pthread_t thread1,
+		  thread2,
+		  thread3,
+		  thread4,
+		  thread5;
+	int	  irthread1,
+		  irthread2,
+		  irthread3,
+		  irthread4,
+		  irthread5;
+	
 	system("clear");
 	printf("Starting Invierno.\n");
 	printf("Checking core programs.\n");
-   	simple_check();
+   	
+	irthread1 = pthread_create(&thread1,NULL,simple_check, NULL);
 	if (Init1.core_files != 0){
 		return 1;
 	}
-	environment();
+	irthread2 = pthread_create(&thread1,NULL,environment, NULL);
 	if (Init1.environment != 0	|| Init1.core_invierno_bash != 0){
 		return 1;
 	}
@@ -141,11 +148,12 @@ int main( int first_arg, char **second_arg){
 	else{
 		printf("[OK]\tAuto assign IP adress.\n");
 	}
-	docker_init();
+	irthread3 = pthread_create(&thread3,NULL,docker_init, NULL);
 	if (Init1.docker != 0){
 		return 1;
 	}
-	update();  
-    system("/var/lib/invierno/core/bash --init-file /etc/inviernorc");
+	irthread4 = pthread_create(&thread4,NULL, update, NULL);  
+	system("/var/lib/invierno/core/bash --init-file /etc/inviernorc");
 	return 0;
 }
+
