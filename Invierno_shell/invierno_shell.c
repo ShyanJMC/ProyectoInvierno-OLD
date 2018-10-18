@@ -136,7 +136,7 @@ int main( int first_arg, char **second_arg){
 	if (Init1.core_files != 0){
 		return 1;
 	}
-	irthread2 = pthread_create(&thread1,NULL,environment, NULL);
+	irthread2 = pthread_create(&thread2,NULL,environment, NULL);
 	if (Init1.environment != 0	|| Init1.core_invierno_bash != 0){
 		return 1;
 	}
@@ -153,6 +153,15 @@ int main( int first_arg, char **second_arg){
 		return 1;
 	}
 	irthread4 = pthread_create(&thread4,NULL, update, NULL);  
+
+
+/* Awaiting the finish of the pthreads before start Bash in the line post comments */
+	pthread_join(thread1, NULL);
+	pthread_join(thread2, NULL);
+	pthread_join(thread3, NULL);
+	pthread_join(thread4,NULL);
+	
+/* */
 	system("/var/lib/invierno/core/bash --init-file /etc/inviernorc");
 	return 0;
 }
