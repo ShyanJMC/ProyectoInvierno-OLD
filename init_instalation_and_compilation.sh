@@ -3,11 +3,16 @@
 #Requeriments;
 # GCC
 # MAKE
+# AUTOMAKE
+# BISON
+# TEXINFO
+
+# DEBIAN Systems; build-essentials
 ###########################################################
 #### This set is only and only for you can configure
 #### ProyectoInvierno inside a docker container mknod, if is 
 #### not please comment the below line
-FORCE_UNSAFE_CONFIGURE=1
+export FORCE_UNSAFE_CONFIGURE=1
 
 ###########################################################
 
