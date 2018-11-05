@@ -6,15 +6,17 @@
 # AUTOMAKE
 # BISON
 # TEXINFO
+# PACMAN <------ Invierno_shell use that for update.
 
 # DEBIAN Systems; build-essentials
 ###########################################################
-#### This set is only and only for you can configure
-#### ProyectoInvierno inside a docker container mknod, if is 
-#### not please comment the below line
+#### This set is only for you can configure
+#### ProyectoInvierno inside a docker container, if this is 
+#### not that scenario please comment the below line
 export FORCE_UNSAFE_CONFIGURE=1
 
 ###########################################################
+#### Variables for compile and crate
 
 WORKDIR=~/ProyectoInvierno/
 IMAGESDIR=$WORKDIR/Images
@@ -22,10 +24,11 @@ SHELLDIR=$WORKDIR/Invierno_shell
 UTILSDIR=$WORKDIR/Invierno_shell/core/coreutils-8.30/
 BASHDIR=$WORKDIR/Invierno_shell/core/bash-4.4.18/
 GREPDIR=$WORKDIR/Invierno_shell/core/grep-3.1/
-
 INVDIR=/var/lib/invierno
 INVFILE=/etc/invierno
 COREDIR=$INVDIR/core
+
+###########################################################
 
 #!/bin/bash
 clear
@@ -75,4 +78,4 @@ gcc -lpthread invierno_shell.c -o invierno_shell
 cp invierno_shell /usr/bin/
 
 echo
-echo "Done"
+echo "Done. ProyectoInvierno compiled and installed."
