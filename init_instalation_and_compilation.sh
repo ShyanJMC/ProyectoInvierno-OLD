@@ -27,8 +27,6 @@ INVDIR=/var/lib/invierno
 INVFILE=/etc/invierno
 COREDIR=$INVDIR/core
 
-GCCARGS= -Wall -lpthread
-
 #!/bin/bash
 clear
 echo "Working...."
@@ -70,7 +68,7 @@ cp src/fgrep $INVDIR/core
 echo "-------------"
 echo "Compiling shell....."
 cd $SHELLDIR
-gcc $GCCARGS invierno_shell.c -o invierno_shell
+gcc -lpthread invierno_shell.c -o invierno_shell
 cp invierno_shell /usr/bin/
 
 echo
