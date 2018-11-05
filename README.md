@@ -1,5 +1,7 @@
 # ProyectoInvierno
 Personal project for docker's containers and a custom Arch Linux that will integrate them into a custom shell and environment. <br />
+All this programs are programmed in C languaje, using another third party programms (see Credetis and CopyRight).<br />
+To keep a minimal of quality, I created and tested all my programs using the gcc's arguments; -Wall -Werror <br>
 <br />
 
 ## Disclaimer [ESPAÑOL] <br />
