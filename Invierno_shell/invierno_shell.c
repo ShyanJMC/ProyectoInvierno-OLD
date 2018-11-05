@@ -17,14 +17,14 @@ Are in the order in wich the program execute.
 */
 struct Information 
 {
-	int core_files,
-	environment,
-	core_invierno_bash,
-	internal_ip_address,
-	docker,
-	invierno_container,
-	updated,
-	pthreads;
+	int 	core_files,
+		environment,
+		core_invierno_bash,
+		internal_ip_address,
+		docker,
+		invierno_container,
+		updated,
+		pthreads;
 }Init1;
 
 /*
@@ -173,7 +173,7 @@ int main( int first_arg, char **second_arg)
 	pthread_join(thread3, NULL);
 	pthread_join(thread4, NULL);
 	
-/* */
+/* Execution of bash */
 	system("/var/lib/invierno/core/bash --init-file /etc/inviernorc");
 	return 0;
 }
