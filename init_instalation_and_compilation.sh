@@ -49,15 +49,18 @@ ls | grep -Ev ".h|.c|.mk|blake2|dcgen|.o" | xargs cp -t /var/lib/invierno/core
 echo "-------------"
 echo "Copying the Ivierno's Containers"
 mkdir $INVDIR/Images
-cp -r $IMAGESDIR $INVDIR/Images
+cp -r $IMAGESDIR $INVDIR
 
 
 echo "-------------"
-echo "Compiling BASH and Grep"
+echo "Compiling BASH"
 cd $BASHDIR
 ./configure
 make
 cp bash $INVDIR/core
+
+echo "-------------"
+echo "Compiling grep"
 cd $GREPDIR
 ./configure
 make
