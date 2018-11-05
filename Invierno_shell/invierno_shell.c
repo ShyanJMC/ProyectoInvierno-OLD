@@ -44,6 +44,7 @@ void *simple_check()
 		printf("[OK]\tCore files.\n");
 		Init1.core_files = 0;
 	}
+	return 0;
 }
 
 /*
@@ -69,6 +70,7 @@ void *environment()
 	{
 	 	printf("[OK]\tBash enabled.\n");
 	}
+	return 0;
 }
 
 /*
@@ -102,6 +104,7 @@ void *docker_init ()
     		Init1.invierno_container = 0;
     	}
     }
+    return 0;
 }
 
 /*

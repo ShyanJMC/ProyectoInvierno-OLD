@@ -27,7 +27,7 @@ INVDIR=/var/lib/invierno
 INVFILE=/etc/invierno
 COREDIR=$INVDIR/core
 
-GCCARGS= -Wall -Werror -lpthread
+GCCARGS= -Wall -lpthread
 
 #!/bin/bash
 clear
@@ -46,7 +46,7 @@ cd $UTILSDIR
 make
 cd src/
 mkdir -p $COREDIR
-ls | grep -Ev ".h|.c|.mk|blake2|dcgen" | xargs cp -t /var/lib/invierno/core
+ls | grep -Ev ".h|.c|.mk|blake2|dcgen|.o" | xargs cp -t /var/lib/invierno/core
 
 echo "-------------"
 echo "Copying the Ivierno's Containers"
