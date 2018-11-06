@@ -10,7 +10,7 @@
 
 int main(){
 	int var1;
-	var1 = system("ps aux | grep tmux | grep -v grep");
+	var1 = system("ps aux | grep tmux | grep -Ev 'grep|man|vi|vim|nano'");
 	if(var1 !=0){
 		system("clear");
 		system("tmux");
