@@ -4,18 +4,6 @@ All this programs are programmed in C languaje, using another third party progra
 To keep a minimal of quality, I created and tested all my programs using the gcc's arguments; -Wall -Werror <br>
 <br />
 
-## Disclaimer [ESPAÑOL] <br />
-Estos programas son simplemente eso, programas, cuya intención es facilitar algunas tareas administrativas cuando se inicia el sistema.<br />
-Ninguno de los programas y utilidades (con referencia expresa a los containers de Docker situados en el directorio "Images") tiene por fin causar un daño físico o metafórico a cualquier bien o persona ajena al usuario que lo ejecute. Como tal yo, Joaquin Manuel Crespo, no puedo hacerme responsable de las acciones tomadas por el usuario que ejecute y accione usando los archivos de creación de los containers de Tor y Parrot Sec, por tal motivo si usted va a usar estos containers, úselos bajo su propia responsabilidad en las acciones pasadas y venideras que haga con estos programas. <br />
-Como tal, abajo en la sección "Credits and CopyRight" están especificados los autores originales de cada uno de estos programas, yo simplemente los he empaquetado en programas independientes de la distribución Gnu/Linux y los he puesto en containers. <br />
-Con base en lo anteriormente mencionado, yo solo modifico la forma de instalación de estas herramientas, el usuario puede encontrar información alrededor de la web sobre como hacerlo por él/ella mismo sin la necesidad de usar este proyecto. <br />
-
-## Disclaimer [ENGLISH] <br />
-These programs are simply that, programs, whose intention is to facilitate some administrative tasks when the system is started. <br />
-None of the programs and utilities (with express reference to the Docker's containers located in the "Images" directory) is intended to cause physical or metaphorical damage to any patrimony or person alien to the user who executes it. As such I, Joaquin Manuel Crespo, can not be held responsible for the actions taken by the user that executes and operates using the Tor and Parrot Sec container creation files, for this reason if you are going to use these containers, use them under your own responsibility in the past and future actions you take with these programs. <br />
-As such, below in the section "Credits and CopyRight" the original authors of each of these programs are specified, I have simply packaged them in independent programs of the Gnu / Linux distribution and I have put them in containers. <br />
-Based on the aforementioned, I only modify the form of installation of these tools, the user can find information around the web on how to do it himself / herself without the need to use this project. <br />  
-
 ## The same is composed by;
 -BlackOS Linux; <br /> A custom Arch Linux for use as base for this project. <br /><br />
 -Invierno Shell; <br /> A custom Shell with inits checks and independient from the distribution.<br /><br />
@@ -24,7 +12,15 @@ Based on the aforementioned, I only modify the form of installation of these too
  &nbsp;&nbsp;&nbsp; -Tor Invierno. <br />
  &nbsp;&nbsp;&nbsp; -Privoxy Invierno. <br/><br />
 
-## Requeriments ( for now, I'm including the dependencies inside the core directory);
+# Escepcion de responsabilidad y terminos de uso.
+-Link en español; <br />
+https://github.com/ShyanJMC/ProyectoInvierno/wiki/Condiciones-de-uso-y-escepcion-de-responsabilidad.
+
+# Disclaimer and terms of use.
+-Link in english; <br />
+https://github.com/ShyanJMC/ProyectoInvierno/wiki/Terms-of-use-and-disclaimer
+
+## Requeriments;
 -Gcc <br />
 -Docker <br />
 -Dhcpcd <br />
