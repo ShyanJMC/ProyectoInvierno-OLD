@@ -15,7 +15,7 @@ To keep a minimal of quality, I created and tested all my programs using the gcc
 # Escepcion de responsabilidad y terminos de uso.
 -Link en español; <br />
 https://github.com/ShyanJMC/ProyectoInvierno/wiki/Condiciones-de-uso-y-escepcion-de-responsabilidad.
-
+ 
 # Disclaimer and terms of use.
 -Link in english; <br />
 https://github.com/ShyanJMC/ProyectoInvierno/wiki/Terms-of-use-and-disclaimer
