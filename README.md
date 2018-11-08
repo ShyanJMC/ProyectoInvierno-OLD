@@ -1,32 +1,23 @@
 # ProyectoInvierno
-Personal project for docker's containers and a custom Arch Linux that will integrate them into a custom shell and environment. <br />
-All this programs are programmed in C languaje, using another third party programms (see Credetis and CopyRight).<br />
-To keep a minimal of quality, I created and tested all my programs using the gcc's arguments; -Wall -Werror <br>
+Personal project for docker's containers, a custom Arch Linux and a custom shell. <br /><br />
+The objetive of this is create a personal, and distro independent, environment. <br /><br />
+To keep a minimal of quality, I created and tested all my programs using the gcc's arguments; -Wall -Werror <br />
 <br />
 
-## The same is composed by;
--BlackOS Linux; <br /> A custom Arch Linux for use as base for this project. <br /><br />
--Invierno Shell; <br /> A custom Shell with inits checks and independient from the distribution.<br /><br />
--Docker's containers; <br /> They will include all my personal projects (in alpha at today). The same are; <br /><br />
- &nbsp;&nbsp;&nbsp; -Pentesting Invierno. <br />
- &nbsp;&nbsp;&nbsp; -Tor Invierno. <br />
- &nbsp;&nbsp;&nbsp; -Privoxy Invierno. <br/><br />
+#### Wiki and all information;
+[Invierno's Wiki](https://github.com/ShyanJMC/ProyectoInvierno/wiki)
 
-# Escepcion de responsabilidad y terminos de uso.
+#### Escepcion de responsabilidad y terminos de uso.
 -Link en español; <br />
 https://github.com/ShyanJMC/ProyectoInvierno/wiki/Condiciones-de-uso-y-escepcion-de-responsabilidad.
  
-# Disclaimer and terms of use.
+#### Disclaimer and terms of use.
 -Link in english; <br />
 https://github.com/ShyanJMC/ProyectoInvierno/wiki/Terms-of-use-and-disclaimer
 
 ## Requeriments;
--Gcc <br />
--Docker <br />
--Dhcpcd <br />
--Automake <br />
--Autoconf <br />
--Dhclient <br /><br />
+The requeriments are specified in the "How To Build" section of the wiki.
+
 ## Credits and CopyRight;
 -[ArchLinux](https://www.archlinux.org/)<br />
 -[Docker](https://www.docker.com/) <br />
@@ -40,8 +31,8 @@ https://github.com/ShyanJMC/ProyectoInvierno/wiki/Terms-of-use-and-disclaimer
 This is a custom shell for Gnu/Linux that have all dependencies integrated in /var/lib/invierno folder.<br />
 This shell check at the init all needed services and the requeriments of ProyectoInvierno, setting automatically IP address, Invierno's containers, shell configuration and auto update of the system (and another things), all in different threads (4 in total).<br />
 
-### How to build (run as root); <br />
-cd ~ && git clone https://github.com/ShyanJMC/ProyectoInvierno.git && cd ProyectoInvierno/ && bash +x init_instalation_and_compilation.sh
+### How to build <br />
+[HowToBuild Invierno_Shell](https://github.com/ShyanJMC/ProyectoInvierno/wiki/How-to-Build)
 <br />
 ## Pentesting Invierno;
 ![Invnierno-pentesting](https://github.com/ShyanJMC/ProyectoInvierno/blob/master/screenshots/Screenshot2.png) <br />
