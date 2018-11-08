@@ -28,6 +28,26 @@ INVDIR=/var/lib/invierno
 INVFILE=/etc/invierno
 COREDIR=$INVDIR/core
 
+#### System
+############# Possible combinatios;
+############# Debian
+############# RedHat
+############# Gentoo
+############# Arch
+
+echo "Installing dependencies for compile and install ProyectoInvierno"
+echo "The logs will be init_proyectoinvierno and init_proyectoinvierno_error"
+echo
+SYSTEM=$1
+if	[$SYSTEM == "Debian"];	then
+	apt install -y build-essentials texinfo bison automake gcc make > init_proyectoinvierno 2> init_proyectoinvierno_error
+elif	[$SYSTEM == "RedHat"];	then
+	yum groupinstall -y "Development Tools" > init_proyectoinvierno 2> init_proyectoinvierno_error
+elif	[$SYSTEM == "Gentoo"];	then
+	emerge sys-apps/texinfo sys-devel/bison sys-devel/automake sys-devel/make > init_proyectoinvierno 2> init_proyectoinvierno_error
+elif	[$SYSTEM == "Arch"];		then
+	yes | pacman -S bison texinfo automake gcc make > init_proyectoinvierno 2> init_proyectoinvierno_error
+fi 
 ###########################################################
 
 #!/bin/bash
