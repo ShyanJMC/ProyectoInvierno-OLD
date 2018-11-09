@@ -41,12 +41,16 @@ echo
 SYSTEM=$1
 if	[$SYSTEM == "Debian"];	then
 	apt install -y build-essentials texinfo bison automake gcc make > init_proyectoinvierno 2> init_proyectoinvierno_error
+	echo "SYS=deb" >> /etc/invierno
 elif	[$SYSTEM == "RedHat"];	then
 	yum groupinstall -y "Development Tools" > init_proyectoinvierno 2> init_proyectoinvierno_error
+	echo "SYS=red" >> /etc/invierno
 elif	[$SYSTEM == "Gentoo"];	then
 	emerge sys-apps/texinfo sys-devel/bison sys-devel/automake sys-devel/make > init_proyectoinvierno 2> init_proyectoinvierno_error
+	echo "SYS=gen" >> /etc/invierno
 elif	[$SYSTEM == "Arch"];		then
 	yes | pacman -S bison texinfo automake gcc make > init_proyectoinvierno 2> init_proyectoinvierno_error
+	echo "SYS=arc" >> /etc/invierno
 fi 
 ###########################################################
 
