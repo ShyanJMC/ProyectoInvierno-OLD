@@ -1,3 +1,20 @@
+
+#/*
+# Invierno SHELL init and instalation script.
+# Version 0.0.5 ALPHA
+# Copyright 2018 - Joaquin Manuel Crespo
+# Licensed in GeneralPublicLicense v3.
+#
+# This file is part of ProyectoInvierno.
+# ProyectoInvierno is free software, you can use,
+# redistribute it and/or modify it under the terms
+# of the GNU General Public License as published by 
+# Free Software Foundation, either version 3 of the license.
+#
+#
+# Developed by ShyanJMC initially at 2018.
+#*/
+
 ##### Script created by ShyanJMC for ProyectoInvierno.#####
 ###########################################################
 #Requeriments;
@@ -48,7 +65,7 @@ elif	[$SYSTEM == "RedHat"];	then
 elif	[$SYSTEM == "Gentoo"];	then
 	emerge sys-apps/texinfo sys-devel/bison sys-devel/automake sys-devel/make > init_proyectoinvierno 2> init_proyectoinvierno_error
 	echo "SYS=gen" >> /etc/invierno
-elif	[$SYSTEM == "Arch"];		then
+elif	[$SYSTEM == "Arch"];	then
 	yes | pacman -S bison texinfo automake gcc make > init_proyectoinvierno 2> init_proyectoinvierno_error
 	echo "SYS=arc" >> /etc/invierno
 fi 
@@ -80,11 +97,12 @@ cp -r $IMAGESDIR $INVDIR
 
 
 echo "-------------"
-echo "Compiling BASH"
+echo "Compiling Invierno Shell"
 cd $BASHDIR
 ./configure
 make
 cp bash $INVDIR/core
+
 
 echo "-------------"
 echo "Compiling grep"
@@ -99,7 +117,7 @@ echo "-------------"
 echo "Compiling shell....."
 cd $SHELLDIR
 gcc -lpthread invierno_shell.c -o invierno_shell
-cp invierno_shell /usr/bin/
+cp invierno_shell /bin/
 
 echo
 echo "Done. ProyectoInvierno compiled and installed."
