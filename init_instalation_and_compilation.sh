@@ -1,4 +1,3 @@
-
 #/*
 # Invierno SHELL init and instalation script.
 # Version 0.0.5 ALPHA
@@ -16,6 +15,8 @@
 #*/
 
 ##### Script created by ShyanJMC for ProyectoInvierno.#####
+###########################################################
+#!/bin/bash
 ###########################################################
 #Requeriments;
 # GCC
@@ -57,7 +58,7 @@ echo "The logs will be init_proyectoinvierno and init_proyectoinvierno_error"
 echo
 SYSTEM=$1
 if	[$SYSTEM == "Debian"];	then
-	apt install -y build-essentials texinfo bison automake gcc make > init_proyectoinvierno 2> init_proyectoinvierno_error
+	apt install -y build-essentials texinfo bison automake gcc make dh-autoreconf > init_proyectoinvierno 2> init_proyectoinvierno_error
 	echo "SYS=deb" >> /etc/invierno
 elif	[$SYSTEM == "RedHat"];	then
 	yum groupinstall -y "Development Tools" > init_proyectoinvierno 2> init_proyectoinvierno_error
@@ -70,8 +71,11 @@ elif	[$SYSTEM == "Arch"];	then
 	echo "SYS=arc" >> /etc/invierno
 fi 
 ###########################################################
+####### Bash 		need aclocal-1.14
+####### Coreutils 	need aclocal-1.15
+####### Grep family 	need aclocal-1.99a
+####### Because of that is needed autoreconf -f -i
 
-#!/bin/bash
 clear
 echo "Working...."
 echo "Making configuration files..."
@@ -84,6 +88,7 @@ echo "DCK=1" >> $INVFILE
 echo "-------------"
 echo "Compiling core utils..."
 cd $UTILSDIR
+autoreconf -i -f
 ./configure
 make
 cd src/
@@ -99,6 +104,7 @@ cp -r $IMAGESDIR $INVDIR
 echo "-------------"
 echo "Compiling Invierno Shell"
 cd $BASHDIR
+autoreconf -i -f
 ./configure
 make
 cp bash $INVDIR/core
@@ -107,6 +113,7 @@ cp bash $INVDIR/core
 echo "-------------"
 echo "Compiling grep"
 cd $GREPDIR
+autoreconf -i -f
 ./configure
 make
 cp src/grep $INVDIR/core
