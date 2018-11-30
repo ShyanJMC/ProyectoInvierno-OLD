@@ -1,3 +1,5 @@
+/* Changes done by Joaquin Manuel Crespo (aka Shyanjmc) for ProyectoInvierno ( www.shyanjmc.com ) */
+
 /* shell.c -- GNU's idea of the POSIX shell specification. */
 
 /* Copyright (C) 1987-2015 Free Software Foundation, Inc.
@@ -23,6 +25,7 @@
   Sunday, January 10th, 1988.
   Initial author: Brian Fox
 */
+
 #define INSTALL_DEBUG_MODE
 
 #include "config.h"
@@ -137,7 +140,12 @@ char *current_host_name = (char *)NULL;
   -1 = login shell from "--login" (or -l) flag.
   -2 = both from getty, and from flag.
  */
-int login_shell = 0;
+
+/* 
+ * Changed from cero to one by Shyanjmc
+ */
+
+int login_shell = -1;
 
 /* Non-zero means that at this moment, the shell is interactive.  In
    general, this means that the shell is at this moment reading input
@@ -155,7 +163,7 @@ int hup_on_exit = 0;
 int check_jobs_at_exit = 0;
 
 /* Non-zero means to change to a directory name supplied as a command name */
-int autocd = 0;
+int autocd = 1;
 
 /* Tells what state the shell was in when it started:
 	0 = non-interactive shell script
@@ -183,6 +191,7 @@ int current_command_number = 1;
 int indirection_level = 0;
 
 /* The name of this shell, as taken from argv[0]. */
+/* Edited by ShyanJMC for set the shell name */
 char *shell_name = (char *)NULL;
 
 /* time in seconds when the shell was started */
@@ -199,7 +208,8 @@ int have_devfd = 0;
 #endif
 
 /* The name of the .(shell)rc file. */
-static char *bashrc_file = DEFAULT_BASHRC;
+/* Edited by ShyanJMC for load the Invierno's BASH file. */
+static char *bashrc_file = "/etc/inviernorc";
 
 /* Non-zero means to act more like the Bourne shell on startup. */
 static int act_like_sh;
@@ -1684,13 +1694,15 @@ unset_bash_input (check_zero)
 #  define PROGRAM "bash"
 #endif
 
+/* Hacked by ShyanJMC */
 static void
 set_shell_name (argv0)
      char *argv0;
 {
   /* Here's a hack.  If the name of this shell is "sh", then don't do
      any startup files; just try to be more like /bin/sh. */
-  shell_name = argv0 ? base_pathname (argv0) : PROGRAM;
+  /* shell_name = argv0 ? base_pathname (argv0) : PROGRAM; */
+  shell_name = "InviernoShell";
 
   if (argv0 && *argv0 == '-')
     {
@@ -1704,7 +1716,8 @@ set_shell_name (argv0)
   if (shell_name[0] == 's' && shell_name[1] == 'u' && shell_name[2] == '\0')
     su_shell++;
 
-  shell_name = argv0 ? argv0 : PROGRAM;
+  /* shell_name = argv0 ? argv0 : PROGRAM; */
+  shell_name = "InviernoShell";
   FREE (dollar_vars[0]);
   dollar_vars[0] = savestring (shell_name);
 
@@ -1864,6 +1877,7 @@ shell_initialize ()
 #endif
 }
 
+/* Edited by ShyanJMC */
 /* Function called by main () when it appears that the shell has already
    had some initialization performed.  This is supposed to reset the world
    back to a pristine state, as if we had been exec'ed. */
@@ -1902,7 +1916,8 @@ shell_reinitialize ()
 
   /* Ensure that the default startup file is used.  (Except that we don't
      execute this file for reinitialized shells). */
-  bashrc_file = DEFAULT_BASHRC;
+  /* bashrc_file = DEFAULT_BASHRC; */
+  bashrc_file = "/etc/inviernorc";
 
   /* Delete all variables and functions.  They will be reinitialized when
      the environment is parsed. */
@@ -1927,14 +1942,14 @@ show_shell_usage (fp, extra)
   char *set_opts, *s, *t;
 
   if (extra)
-    fprintf (fp, _("GNU bash, version %s-(%s)\n"), shell_version_string (), MACHTYPE);
+    fprintf (fp, _("Invierno Shell based in GNU bash, version %s-(%s)\n"), shell_version_string (), MACHTYPE);
   fprintf (fp, _("Usage:\t%s [GNU long option] [option] ...\n\t%s [GNU long option] [option] script-file ...\n"),
 	     shell_name, shell_name);
   fputs (_("GNU long options:\n"), fp);
   for (i = 0; long_args[i].name; i++)
     fprintf (fp, "\t--%s\n", long_args[i].name);
 
-  fputs (_("Shell options:\n"), fp);
+  fputs (_("Invierno Shell options:\n"), fp);
   fputs (_("\t-ilrsD or -c command or -O shopt_option\t\t(invocation only)\n"), fp);
 
   for (i = 0, set_opts = 0; shell_builtins[i].name; i++)
@@ -1960,8 +1975,8 @@ show_shell_usage (fp, extra)
       fprintf (fp, _("Type `%s -c help' for more information about shell builtin commands.\n"), shell_name);
       fprintf (fp, _("Use the `bashbug' command to report bugs.\n"));
       fprintf (fp, "\n");
-      fprintf (fp, _("bash home page: <http://www.gnu.org/software/bash>\n"));
-      fprintf (fp, _("General help using GNU software: <http://www.gnu.org/gethelp/>\n"));
+      fprintf (fp, _("Proyecto Invierno: www.shyanjmc.com and bash home page: <http://www.gnu.org/software/bash>\n"));
+      fprintf (fp, _("Proyecto Invierno software: www.shyanjmc.com and general help using GNU software: <http://www.gnu.org/gethelp/>\n"));
     }
 }
 
