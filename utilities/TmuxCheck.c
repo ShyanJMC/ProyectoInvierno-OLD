@@ -1,9 +1,18 @@
 /*
- *	This program is part of ProyectoInvierno
- *	Copyleft by Joaquin Manuel Crespo.
- *	GPLv3
- *	github.com/ShyanJMC/ProyectoInvierno
- */
+Invierno SHELL Tmux's check file.
+Version 0.0.5 ALPHA
+Copyright 2018 - Joaquin Manuel Crespo
+Licensed in GeneralPublicLicense v3.
+
+This file is part of ProyectoInvierno.
+ProyectoInvierno is free software, you can use,
+redistribute it and/or modify it under the terms
+of the GNU General Public License as published by 
+Free Software Foundation, either version 3 of the license.
+
+
+Developed by ShyanJMC initially at 2018.
+*/
 
 #include<stdio.h>
 #include<stdlib.h>

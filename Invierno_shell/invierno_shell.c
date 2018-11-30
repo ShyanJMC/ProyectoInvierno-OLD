@@ -1,14 +1,30 @@
 /*
 Invierno SHELL.
-Version 0.0.2 ALPHA
-Licensed in GPL v3.
+Version 0.0.5 ALPHA
+Copyright 2018 - Joaquin Manuel Crespo
+Licensed in GeneralPublicLicense v3.
 
-Developed by ShyanJMC.
+This file is part of ProyectoInvierno.
+ProyectoInvierno is free software, you can use,
+redistribute it and/or modify it under the terms
+of the GNU General Public License as published by 
+Free Software Foundation, either version 3 of the license.
+
+
+Developed by ShyanJMC initially at 2018.
 */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include<pthread.h>
+
+/* The shell automatically print an error to stderr 
+ * and some message to stdout. With this information
+ * you can redirect with 2> or > respectively.
+ */
+
+
 /*
 Store for information about the program.
 1 is errror.
