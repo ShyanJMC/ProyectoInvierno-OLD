@@ -133,7 +133,7 @@ void *update()
 {
 	int buffer;
 	printf("Updating the system.\n");
-	buffer = system("yes | pacman -Syu > /dev/null 2> /dev/null");
+	buffer = system("su -c 'yes | pacman -Syu' > /dev/null 2> /dev/null");
 	if (buffer != 0)
 	{
 		fprintf(stderr,"[FAIL]\tError to update the system.\n");
@@ -141,7 +141,7 @@ void *update()
 	}
 	else 
 	{
-		printf("[OK]\tSystem updated.\n");
+		printf("\n[OK]\tSystem updated.\n");
 		Init1.updated = 0;
 	}
 	return 0;
