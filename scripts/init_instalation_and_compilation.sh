@@ -36,7 +36,7 @@ export FORCE_UNSAFE_CONFIGURE=1
 ###########################################################
 #### Variables for compile and crate
 
-WORKDIR=~/ProyectoInvierno/
+iWORKDIR=~/ProyectoInvierno
 IMAGESDIR=$WORKDIR/Images
 SHELLDIR=$WORKDIR/Invierno_shell
 UTILSDIR=$WORKDIR/Invierno_shell/core/coreutils-8.30/
