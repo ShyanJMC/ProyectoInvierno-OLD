@@ -8,3 +8,6 @@ shell.c
 ------- show_shell_usage (fp, extra) changes the references of GNU to add the Invierno and GNU.
 ------- set_shell_name for change the shell name to InviernoShell.
 ------- set shell_name in main to InviernoShell.
+
+version.c
+------- Added copyright note for my changes.
