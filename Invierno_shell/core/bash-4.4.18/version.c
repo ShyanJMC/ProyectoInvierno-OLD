@@ -1,3 +1,19 @@
+/*
+Invierno SHELL.
+Version 0.0.5 ALPHA
+Copyright 2018 - Joaquin Manuel Crespo
+Licensed in GeneralPublicLicense v3.
+
+This file is part of ProyectoInvierno.
+ProyectoInvierno is free software, you can use,
+redistribute it and/or modify it under the terms
+of the GNU General Public License as published by 
+Free Software Foundation, either version 3 of the license.
+
+
+Developed by ShyanJMC initially at 2018.
+*/
+
 /* version.c -- distribution and version numbers. */
 
 /* Copyright (C) 1989-2016 Free Software Foundation, Inc.
@@ -43,7 +59,7 @@ const char * const release_status = (char *)0;
 #endif
 const char * const sccs_version = SCCSVERSION;
 
-const char * const bash_copyright = N_("Copyright (C) 2016 Free Software Foundation, Inc.");
+const char * const bash_copyright = N_("Copyright (C) 2016 Free Software Foundation, Inc.\nCopyright (C) 2018 ShyanJMC.");
 const char * const bash_license = N_("License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n");
 
 /* If == 31, shell compatible with bash-3.1, == 32 with bash-3.2, and so on */
@@ -83,7 +99,7 @@ void
 show_shell_version (extended)
      int extended;
 {
-  printf (_("GNU bash, version %s (%s)\n"), shell_version_string (), MACHTYPE);
+  printf (_("Invierno Shell based in GNU bash, version %s (%s)\n"), shell_version_string (), MACHTYPE);
   if (extended)
     {
       printf ("%s\n", _(bash_copyright));

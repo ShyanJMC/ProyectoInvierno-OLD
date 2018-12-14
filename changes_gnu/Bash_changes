@@ -1,9 +1,10 @@
 Changes done into the GNU's Bourne Again Shell (BASH).
 Changes done by ShyanJMC ( Joaquin Manuel Crespo ) for ProyectoInvierno ( www.shyanjmc.com ).
 ----------------------------------------
-shell.c 
+shell.c
 ------- int login_shell = 0 to int login_shell = -1 to enable login shell option.
 ------- int autocd = 0 to int autocd = 1 to enable move to directory only specifing the path.
 ------- static char *bashrc_file = DEFAULT_BASHRC to static char *bashrc_file = /etc/
 ------- show_shell_usage (fp, extra) changes the references of GNU to add the Invierno and GNU.
 ------- set_shell_name for change the shell name to InviernoShell.
+------- set shell_name in main to InviernoShell.
