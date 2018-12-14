@@ -1,4 +1,4 @@
 # This is a testing repo for ProyectoInvierno.
 
-Done:
--Shell name seted as; InviernoShell
+Done:<br />
+-Shell name seted as; InviernoShell<br />
