@@ -42,6 +42,7 @@ SHELLDIR=$WORKDIR/Invierno_shell
 UTILSDIR=$WORKDIR/Invierno_shell/core/coreutils-8.30/
 BASHDIR=$WORKDIR/Invierno_shell/core/bash-4.4.18/
 GREPDIR=$WORKDIR/Invierno_shell/core/grep-3.1/
+TMUXDIR=$WORKDIR/Invierno_shell/core/tmux
 INVDIR=/var/lib/invierno
 INVFILE=/etc/invierno
 COREDIR=$INVDIR/core
@@ -100,6 +101,15 @@ echo "Copying the Ivierno's Containers"
 mkdir $INVDIR/Images
 cp -r $IMAGESDIR $INVDIR
 
+echo "------------"
+echo "Compiling tmux."
+cd $TMUXDIR
+./autogen.sh
+./configure
+sed -i 's/-std=gnu99/-std=gnu99 -march=native/g' Makefile
+make
+cp tmux $COREDIR
+
 
 echo "-------------"
 echo "Compiling Invierno Shell"
@@ -107,7 +117,7 @@ cd $BASHDIR
 autoreconf -i -f
 ./configure
 make
-cp bash $INVDIR/core
+cp bash $COREDIR
 
 
 echo "-------------"
