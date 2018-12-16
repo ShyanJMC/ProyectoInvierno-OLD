@@ -59,7 +59,7 @@ echo "The logs will be init_proyectoinvierno and init_proyectoinvierno_error"
 echo
 SYSTEM=$1
 if	[$SYSTEM == "Debian"];	then
-	apt install -y build-essentials texinfo bison automake gcc make dh-autoreconf libevent-dev libncurses5-dev > init_proyectoinvierno 2> init_proyectoinvierno_error 
+	apt install -y build-essentials texinfo bison automake gcc make dh-autoreconf libevent-dev libncurses5-dev pkg-config > init_proyectoinvierno 2> init_proyectoinvierno_error 
 	echo "SYS=deb" >> /etc/invierno
 elif	[$SYSTEM == "RedHat"];	then
 	yum groupinstall -y "Development Tools" > init_proyectoinvierno 2> init_proyectoinvierno_error
