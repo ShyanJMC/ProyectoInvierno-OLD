@@ -1,0 +1,18 @@
+#!/bin/bash
+### Set the option 
+tmux set-option remain-on-exit on
+
+### Create the session
+tmux new-session -d -s inviernoshell
+
+### Create the window and set the same.
+tmux rename-window ' Invierno Shell'
+tmux select-window -t invshell:0
+
+### Exec commands
+tmux splitw -t inviernoshell:0
+tmux send-keys -t inviernoshell:0 'clear && docker ps -a' C-m
+
+
+### Attach to the sesion
+tmux -2 attach-session -t inviernoshell
