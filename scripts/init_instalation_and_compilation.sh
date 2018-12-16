@@ -133,7 +133,7 @@ cp src/fgrep $INVDIR/core
 echo "-------------"
 echo "Compiling shell....."
 cd $SHELLDIR
-gcc -lpthread invierno_shell.c -o invierno_shell
+gcc -march=native -lpthread invierno_shell.c -o invierno_shell
 cp invierno_shell /bin/
 
 echo
