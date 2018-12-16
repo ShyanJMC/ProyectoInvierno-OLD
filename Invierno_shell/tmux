@@ -12,21 +12,26 @@
 # */
 
 #!/bin/bash
+
+### Variables
+COREDIR=/var/lib/invierno/core
+
+
 ### Set the option 
-tmux set-option remain-on-exit on
+$COREDIR/tmux set-option remain-on-exit on
 
 ### Create the session
-tmux new-session -d -s inviernoshell
-tmux send-keys -t inviernoshell:0 ' ls / ' C-m
+$COREDIR/tmux new-session -d -s inviernoshell
+$COREDIR/tmux send-keys -t inviernoshell:0 'invierno_shell ' C-m
 
 ### Create the window and set the same.
-tmux rename-window ' Invierno Shell'
-tmux select-window -t invshell:0
+$COREDIR/tmux rename-window ' Invierno Shell'
+$COREDIR/tmux select-window -t invshell:0
 
 ### Exec commands
-tmux splitw -t inviernoshell:0
-tmux send-keys -t inviernoshell:0 'clear && echo "Docker Containers;" && docker ps -a' C-m
+$COREDIR/tmux splitw -t inviernoshell:0
+$COREDIR/tmux send-keys -t inviernoshell:0 'clear && echo "Docker Containers;" && docker ps -a' C-m
 
 
 ### Attach to the sesion
-tmux -2 attach-session -t inviernoshell
+$COREDIR/tmux -2 attach-session -t inviernoshell
