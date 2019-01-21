@@ -93,7 +93,7 @@ void *environment()
 Checks docker and start it.
 After a successful start, check the configuration
 */
-void *docker_init ()
+void *docker_internal_init ()
 {
     int temporal, temporal2;
     printf("Enabling and starting docker.\n");
@@ -178,7 +178,7 @@ int main( int first_arg, char **second_arg)
 	{
 		printf("[OK]\tAuto assign IP adress.\n");
 	}
-	irthread3 = pthread_create(&thread3,NULL,docker_init, NULL);
+	irthread3 = pthread_create(&thread3,NULL,docker_internal_init, NULL);
 	if (Init1.docker != 0)
 	{
 		return 1;
@@ -189,7 +189,7 @@ int main( int first_arg, char **second_arg)
 /* Awaiting the finish of the pthreads before start Bash in the line post comments */
 	pthread_join(thread1, NULL);
 	pthread_join(thread2, NULL);
-	pthread_join(thread3, NULL);
+	/* pthread_join(thread3, NULL); */
 	pthread_join(thread4, NULL);
 	
 /* Execution of bash */
