@@ -43,6 +43,7 @@ UTILSDIR=$WORKDIR/Invierno_shell/core/coreutils-8.30/
 BASHDIR=$WORKDIR/Invierno_shell/core/bash-4.4.18/
 GREPDIR=$WORKDIR/Invierno_shell/core/grep-3.1/
 TMUXDIR=$WORKDIR/Invierno_shell/core/tmux
+MOBY=$WORKDIR/Invierno_shell/core/moby
 INVDIR=/var/lib/invierno
 INVFILE=/etc/invierno
 COREDIR=$INVDIR/core
