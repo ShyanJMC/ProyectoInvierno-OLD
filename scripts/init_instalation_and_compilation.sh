@@ -43,7 +43,7 @@ UTILSDIR=$WORKDIR/Invierno_shell/core/coreutils-8.30/
 BASHDIR=$WORKDIR/Invierno_shell/core/bash-4.4.18/
 GREPDIR=$WORKDIR/Invierno_shell/core/grep-3.1/
 TMUXDIR=$WORKDIR/Invierno_shell/core/tmux
-MOBY=$WORKDIR/Invierno_shell/core/moby
+MOBY=$WORKDIR/Invierno_shell/core/moby/
 INVDIR=/var/lib/invierno
 INVFILE=/etc/invierno
 COREDIR=$INVDIR/core
@@ -81,6 +81,7 @@ fi
 clear
 echo "Working...."
 echo "Making configuration files..."
+echo "All logs in /varlog/invierno_[component]"
 
 cp $SHELLDIR/inviernorc /etc/inviernorc
 touch $INVFILE
@@ -91,8 +92,8 @@ echo "-------------"
 echo "Compiling core utils..."
 cd $UTILSDIR
 autoreconf -i -f
-./configure
-make
+./configure > /var/log/invierno_configure_core_utils 2> /var/log/invierno_error_configure_core_utils
+make > /var/log/invierno_make_core_utils 2> /var/log/invierno_error_make_core_utils
 cd src/
 mkdir -p $COREDIR
 ls | grep -Ev ".h|.c|.mk|blake2|dcgen|.o" | xargs cp -t /var/lib/invierno/core
@@ -105,10 +106,10 @@ cp -r $IMAGESDIR $INVDIR
 echo "------------"
 echo "Compiling tmux."
 cd $TMUXDIR
-./autogen.sh
-./configure
+./autogen.sh > /var/log/invierno_autogen_tmux 2> /var/log/invierno_error_autogen_tmux
+./configure > /var/log/invierno_configure_tmux 2> /var/log/invierno_error_configure_tmux
 sed -i 's/-std=gnu99/-std=gnu99 -march=native/g' Makefile
-make
+make > /var/log/invierno_make_tmux 2> /var/log/invierno_error_make_tmux
 cp tmux $COREDIR
 
 
@@ -116,8 +117,8 @@ echo "-------------"
 echo "Compiling Invierno Shell"
 cd $BASHDIR
 autoreconf -i -f
-./configure
-make
+./configure > /var/log/invierno_configure_shell 2> /var/log/invierno_error_configure_shell
+make > /var/log/invierno_make_shell 2> /var/log/invierno_error_make_shell
 cp bash $COREDIR
 
 
@@ -125,8 +126,8 @@ echo "-------------"
 echo "Compiling grep"
 cd $GREPDIR
 autoreconf -i -f
-./configure
-make
+./configure > /var/log/invierno_configure_grep 2> /var/log/invierno_error_configure_grep
+make > /var/log/invierno_make_grep 2> /var/log/invierno_error_make_grep
 cp src/grep $INVDIR/core
 cp src/egrep $INVDIR/core
 cp src/fgrep $INVDIR/core
@@ -140,9 +141,10 @@ cp invierno_shell /bin/
 echo "-------------"
 echo "Compiling Moby/Docker"
 cd $MOBY
-make build
-make binary 
+make build > /var/log/invierno_make_build_moby 2> /var/log/invierno_error_make_build_moby
+make binary > /var/log/invierno_make_binary_moby 2> /var/log/invierno_error_make_binary_moby
 cp bundles/binary-daemon/* $INVDIR/core
 
 echo
 echo "Done. ProyectoInvierno compiled and installed."
+echo "For errors, check the logs in; /var/log/invierno_[component]"
