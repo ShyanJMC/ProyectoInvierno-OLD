@@ -138,13 +138,6 @@ cd $SHELLDIR
 gcc -march=native -lpthread invierno_shell.c -o invierno_shell
 cp invierno_shell /bin/
 
-echo "-------------"
-echo "Compiling Moby/Docker"
-cd $MOBY
-make build > /var/log/invierno_make_build_moby 2> /var/log/invierno_error_make_build_moby
-make binary > /var/log/invierno_make_binary_moby 2> /var/log/invierno_error_make_binary_moby
-cp bundles/binary-daemon/* $INVDIR/core
-
 echo
 echo "Done. ProyectoInvierno compiled and installed."
 echo "For errors, check the logs in; /var/log/invierno_[component]"

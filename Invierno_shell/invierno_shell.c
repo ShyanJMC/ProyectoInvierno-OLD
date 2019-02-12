@@ -65,8 +65,8 @@ void *simple_check()
 
 /*
 Check the configuration of the environment.
-
 */
+
 void *environment()
 {
 	printf("Checking environment file.\n");
@@ -90,6 +90,33 @@ void *environment()
 }
 
 /*
+Manual start of docker
+*/
+void *docker_init()
+{
+	int temporal1, temporal2;
+	printf("Starting Invierno's docker.\n");
+	temporal2 = system("ps aux | grep -i docker | grep -v grep");
+	if (temporal2 != 0){
+		temporal1 = system("nohup dockerd &");
+		switch(temporal1)
+		{
+			case 0:
+				printf("[OK]\tInvierno's docker started.\n");
+				break;
+			default:
+				fprintf(stderr,"[FAIL]\tInvierno's docker failed to start.\n");
+				break;
+		}
+	}
+	else {
+		return 0; 
+	}
+	return 0;
+}
+/*
+
+/*
 Checks docker and start it.
 After a successful start, check the configuration
 */
@@ -105,41 +132,13 @@ void *docker_internal_init ()
     }
     else
     {
-    	printf("[OK]\tDocker started.\n");
-    	Init1.docker = 0;
-    	printf("Checking invierno's container configuration.\n");
-    	temporal2 = system("/var/lib/invierno/core/grep DCK=0 /etc/invierno > /dev/null");
-    	if (temporal2 != 0)
-	{
-    		fprintf(stderr,"[FAIL]\tInvierno's container disabled.\n");
-    		Init1.invierno_container = 1;
-       	}
-    	else
-	{
-    		printf("[OK]\tInvierno's container enabled. Checking and building.\n");
-    		Init1.invierno_container = 0;
-    	}
+        docker_init;
+        }
     }
     return 0;
 }
 
-void *docker_init()
-{
-	int temporal1, temporal2;
-	printf("Starting Invierno's docker.\n");
-	temporal1 = system("/var/lib/invierno/core/dockerd > /var/log/invierno_docker.log 2> /var/lig/invierno_docker_err.log");
-	switch(temporal1)
-	{
-		case 0:
-			printf("[OK]\tInvierno's docker started.\n");
-			break;
-		default:
-			fprintf(stderr,"[FAIL]\tInvierno's docker failed to start.\n");
-			break;
-	}
-	return 0;
-}
-/*
+
 Upgrade the system.
 Is very simple but is very neccesary keep the system updated with
 the last security updates.
@@ -172,6 +171,7 @@ int main( int first_arg, char **second_arg)
 	int	  irthread1, irthread2, irthread3, irthread4, irthread5;
 	system("clear");
 	printf("Starting Invierno.\n");
+	printf("Bash, Grep family and Coreutils are in GPLv3. Copy of license are under ProyectoInvierno/Licenses.\n");
 	printf("Checking core programs.\n");
    	
 	irthread1 = pthread_create(&thread1,NULL,simple_check, NULL);
@@ -184,18 +184,8 @@ int main( int first_arg, char **second_arg)
 	{
 		return 1;
 	}
-	printf("Assigning internal IP adress.\n");
-	Init1.internal_ip_address = system("dhclient");
-	if(Init1.internal_ip_address != 0)
-	{
-		fprintf(stderr,"[FAIL]\tAuto assign IP adress.\n");
-	}
-	else
-	{
-		printf("[OK]\tAuto assign IP adress.\n");
-	}
-	/* irthread3 = pthread_create(&thread3,NULL,docker_internal_init, NULL); */
-	irthread3 = pthread_create(&thread3,NULL,docker_init,NULL);
+	
+	irthread3 = pthread_create(&thread3,NULL,docker_internal_init,NULL);
 	if (Init1.docker != 0)
 	{
 		return 1;
