@@ -134,11 +134,10 @@ void *docker_internal_init ()
     {
         docker_init;
         }
-    }
-    return 0;
+	return 0;
 }
 
-
+/*
 Upgrade the system.
 Is very simple but is very neccesary keep the system updated with
 the last security updates.
