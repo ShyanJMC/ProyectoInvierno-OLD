@@ -94,7 +94,7 @@ Manual start of docker
 */
 void *docker_init()
 {
-	int temporal1, temporal2;
+	short temporal1, temporal2;
 	printf("Starting Invierno's docker.\n");
 	temporal2 = system("ps aux | grep -i docker | grep -v grep");
 	if (temporal2 != 0){
@@ -122,9 +122,10 @@ After a successful start, check the configuration
 */
 void *docker_internal_init ()
 {
-    int temporal, temporal2;
+    short temporal, temporal2;
     printf("Enabling and starting docker.\n");
     temporal = system("systemctl start docker > /dev/null && systemctl enable docker > /dev/null");
+    printf("[OK]\tInvierno's docker started.\n");
     if (temporal != 0)
     {
         fprintf(stderr,"[FAIL]\tDocker start error.\n");
@@ -132,7 +133,7 @@ void *docker_internal_init ()
     }
     else
     {
-        docker_init;
+	docker_init;
         }
 	return 0;
 }
@@ -145,7 +146,7 @@ the last security updates.
 
 void *update()
 {
-	int buffer;
+	short buffer;
 	printf("Updating the system.\n");
 	buffer = system("su -c 'yes | pacman -Syu' > /dev/null 2> /dev/null");
 	if (buffer != 0)
@@ -157,6 +158,38 @@ void *update()
 	{
 		printf("\n[OK]\tSystem updated.\n");
 		Init1.updated = 0;
+	}
+	return 0;
+}
+
+/* Build the images of docker */
+docker_build()
+/* Check the existence of Invierno's Containers */
+void invierno_images(){
+	short	temporal1, temporal2;
+	char	temporal3;
+	printf("Checking Invierno Containers.\n");
+	temporal1 = system("/var/lib/invierno/core/grep -E DCK=0 /etc/invierno");
+	if (temporal1 !=0){
+		fprintf(stderr,"[FAIL]\tInvierno's containers not enabled.\n");
+		return 1;
+	}
+	else {
+		printf("[OK]\tInvierno's containers enabled. Checking existence.\n");
+		temporal2 = system("docker images | /var/lib/invierno/core/grep -E 'InvPent|InvProx|InvTor'");
+		if (temporal2 !=0){
+			fprintf(stderr,"[Fail]\tInvierno's containers not detected. Do you want build them? y/n; ");
+			temporal3 = getchar();
+			if( temporal3 == 'y'){
+				docker_build();
+			}
+			else {
+				return 0;
+			}
+		}
+		else {
+			printf("[OK]\tInvierno's containers detected.\n");
+		}
 	}
 	return 0;
 }
