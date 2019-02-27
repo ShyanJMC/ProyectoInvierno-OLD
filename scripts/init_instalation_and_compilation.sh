@@ -102,24 +102,13 @@ echo "Copying the Ivierno's Containers"
 mkdir $INVDIR/Images
 cp -r $IMAGESDIR $INVDIR
 
-echo "------------"
-echo "Compiling tmux."
-cd $TMUXDIR
-./autogen.sh > /var/log/invierno_autogen_tmux 2> /var/log/invierno_error_autogen_tmux
-./configure > /var/log/invierno_configure_tmux 2> /var/log/invierno_error_configure_tmux
-sed -i 's/-std=gnu99/-std=gnu99 -march=native/g' Makefile
-make > /var/log/invierno_make_tmux 2> /var/log/invierno_error_make_tmux
-cp tmux $COREDIR
-
-
 echo "-------------"
 echo "Compiling Invierno Shell"
 cd $BASHDIR
-autoreconf -i -f
+autoreconf -i -f > /var/log/invierno_shell 2> /var/log/invierno_shell_error
 ./configure > /var/log/invierno_configure_shell 2> /var/log/invierno_error_configure_shell
 make > /var/log/invierno_make_shell 2> /var/log/invierno_error_make_shell
 cp bash $COREDIR
-
 
 echo "-------------"
 echo "Compiling grep"
