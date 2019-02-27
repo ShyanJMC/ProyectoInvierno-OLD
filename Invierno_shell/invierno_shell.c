@@ -163,7 +163,9 @@ void *update()
 }
 
 /* Build the images of docker */
-docker_build()
+docker_build(){
+	return 0;
+		}
 /* Check the existence of Invierno's Containers */
 void invierno_images(){
 	short	temporal1, temporal2;
