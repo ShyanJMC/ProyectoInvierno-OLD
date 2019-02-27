@@ -58,17 +58,17 @@ COREDIR=$INVDIR/core
 echo "Installing dependencies for compile and install ProyectoInvierno"
 echo "The logs will be init_proyectoinvierno and init_proyectoinvierno_error"
 echo
-SYSTEM=$1
-if	[$SYSTEM == "Debian"];	then
+
+if	[ "$1" == "Debian" ];	then
 	apt install -y build-essentials texinfo bison automake gcc make dh-autoreconf libevent-dev libncurses5-dev pkg-config > init_proyectoinvierno 2> init_proyectoinvierno_error 
 	echo "SYS=deb" >> /etc/invierno
-elif	[$SYSTEM == "RedHat"];	then
+elif	[ "$1" == "RedHat" ];	then
 	yum groupinstall -y "Development Tools" > init_proyectoinvierno 2> init_proyectoinvierno_error
 	echo "SYS=red" >> /etc/invierno
-elif	[$SYSTEM == "Gentoo"];	then
+elif	[ "$1" == "Gentoo" ];	then
 	emerge sys-apps/texinfo sys-devel/bison sys-devel/automake sys-devel/make > init_proyectoinvierno 2> init_proyectoinvierno_error
 	echo "SYS=gen" >> /etc/invierno
-elif	[$SYSTEM == "Arch"];	then
+elif	[ "$1" == "Arch" ];	then
 	yes | pacman -S bison texinfo automake gcc make > init_proyectoinvierno 2> init_proyectoinvierno_error
 	echo "SYS=arc" >> /etc/invierno
 fi 
@@ -78,7 +78,6 @@ fi
 ####### Grep family 	need aclocal-1.99a
 ####### Because of that is needed autoreconf -f -i
 
-clear
 echo "Working...."
 echo "Making configuration files..."
 echo "All logs in /varlog/invierno_[component]"
@@ -91,11 +90,11 @@ echo "DCK=1" >> $INVFILE
 echo "-------------"
 echo "Compiling core utils..."
 cd $UTILSDIR
-autoreconf -i -f
+autoreconf -i -f > /var/log/invierno_coreutils 2> /varlog/invierno_coreutils_error
 ./configure > /var/log/invierno_configure_core_utils 2> /var/log/invierno_error_configure_core_utils
 make > /var/log/invierno_make_core_utils 2> /var/log/invierno_error_make_core_utils
 cd src/
-mkdir -p $COREDIR
+mkdir -p $COREDIR >> /var/log/invierno_coreutils 2>> /varlog/invierno_coreutils_error
 ls | grep -Ev ".h|.c|.mk|blake2|dcgen|.o" | xargs cp -t /var/lib/invierno/core
 
 echo "-------------"
@@ -125,7 +124,7 @@ cp bash $COREDIR
 echo "-------------"
 echo "Compiling grep"
 cd $GREPDIR
-autoreconf -i -f
+autoreconf -i -f > /var/log/invierno_grep 2> /var/log/invierno_grep_error
 ./configure > /var/log/invierno_configure_grep 2> /var/log/invierno_error_configure_grep
 make > /var/log/invierno_make_grep 2> /var/log/invierno_error_make_grep
 cp src/grep $INVDIR/core
