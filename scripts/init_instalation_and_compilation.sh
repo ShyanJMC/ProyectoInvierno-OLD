@@ -80,7 +80,7 @@ fi
 
 echo "Working...."
 echo "Making configuration files..."
-echo "All logs in /varlog/invierno_[component]"
+echo "All logs in /var/log/invierno_[component]"
 
 cp $SHELLDIR/inviernorc /etc/inviernorc
 touch $INVFILE
@@ -90,11 +90,11 @@ echo "DCK=1" >> $INVFILE
 echo "-------------"
 echo "Compiling core utils..."
 cd $UTILSDIR
-autoreconf -i -f > /var/log/invierno_coreutils 2> /varlog/invierno_coreutils_error
+autoreconf -i -f > /var/log/invierno_coreutils 2> /var/log/invierno_coreutils_error
 ./configure > /var/log/invierno_configure_core_utils 2> /var/log/invierno_error_configure_core_utils
 make > /var/log/invierno_make_core_utils 2> /var/log/invierno_error_make_core_utils
 cd src/
-mkdir -p $COREDIR >> /var/log/invierno_coreutils 2>> /varlog/invierno_coreutils_error
+mkdir -p $COREDIR >> /var/log/invierno_coreutils 2>> /var/log/invierno_coreutils_error
 ls | grep -Ev ".h|.c|.mk|blake2|dcgen|.o" | xargs cp -t /var/lib/invierno/core
 
 echo "-------------"
