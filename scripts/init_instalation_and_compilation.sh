@@ -123,7 +123,7 @@ cp src/fgrep $INVDIR/core
 echo "-------------"
 echo "Compiling shell....."
 cd $SHELLDIR
-gcc -march=native -lpthread invierno_shell.c -o invierno_shell
+gcc -march=native -lpthread invierno_shell.c -o invierno_shell > /var/log/invierno_shell_launcher 2> /var/lib/invierno_shell_launcher_error
 cp invierno_shell /bin/
 
 echo
