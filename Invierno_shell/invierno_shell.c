@@ -19,6 +19,11 @@ Developed by ShyanJMC initially at 2018.
  * you can redirect with 2> or > respectively.
  */
 
+/*
+ * Invierno's header.
+ */
+
+#include<invierno.h>
 
 /*
 Store for information about the program.
