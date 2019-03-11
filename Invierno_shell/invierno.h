@@ -125,7 +125,7 @@ void *docker_init()
 {
 	short temporal1, temporal2;
 	printf("%sStarting Invierno's docker.\n",SWHT);
-	temporal2 = system("ps aux | grep -i docker | grep -v grep");
+	temporal2 = system("ps aux | grep -i docker | grep -v grep > /dev/null 2> /dev/null");
 	if (temporal2 != 0){
 		temporal1 = system("nohup dockerd &");
 		switch(temporal1)
