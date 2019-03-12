@@ -192,6 +192,42 @@ void *update()
 
 /* Build the images of docker */
 void docker_build(){
+    short temporal1, temporal2;
+    /* 
+    Just for do a new line.
+     */
+    system("echo");
+    printf("Creating Invierno's containers. This will take some minutes, depending of your connection. \n");
+    temporal1 = system("ls -l /var/lib/invierno/Images/Invierno* > /dev/null 2> /dev/null");
+    switch(temporal1){
+        case 1:
+            fprintf(stderr,"%sNo Invierno's dockerfiles founded.\n",SRED);
+        default:
+            printf("Invierno's dockerfiles founded. Building.\n");
+    }
+    /*
+     * Taking in consideration this images;
+     *  Invierno_tor_dockerfile
+     *  Invierno_privoxy_dockerfile
+     *  Invierno_pentesting_dockerfile
+     *  Invierno_ansible_dockerfile
+     */
+    temporal2 = system("cp /var/lib/invierno/Images/Invierno_tor_dockerfile /var/lib/invierno/Images/Dockerfile && docker build -t invierno_tor /var/lib/invierno/Images");
+    if(temporal2 !=0){
+        fprintf(stderr,"%s[FAIL] Error building Invierno's tor container.\n",SRED);
+    }
+    temporal2 = system("cp /var/lib/invierno/Images/Invierno_provoxy_dockerfile /var/lib/invierno/Images/Dockerfile && docker build -t invierno_privoxy /var/lib/invierno/Images");
+    if(temporal2 !=0){
+        fprintf(stderr,"%s[FAIL] Error building Invierno's provoxy container.\n",SRED);
+    }
+    temporal2 = system("cp /var/lib/invierno/Images/Invierno_pentesting_dockerfile /var/lib/invierno/Images/Dockerfile && docker build -t invierno_pentesting /var/lib/invierno/Images");
+    if(temporal2 !=0){
+        fprintf(stderr,"%s[FAIL] Error building Invierno's pentesting container.\n",SRED);
+    }
+    temporal2 = system("cp /var/lib/invierno/Images/Invierno_ansible_dockerfile /var/lib/invierno/Images/Dockerfile && docker build -t invierno_ansible /var/lib/invierno/Images");
+    if(temporal2 !=0){
+        fprintf(stderr,"%s[FAIL] Error building Invierno's ansible container.\n",SRED);
+    }
 	return;
 }
 
