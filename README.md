@@ -1,7 +1,8 @@
 # ProyectoInvierno
-Personal project for docker's containers, a custom Arch Linux and a custom shell. <br /><br />
+This is personal project for docker's containers, a custom Arch Linux and a custom shell. <br /><br />
 The objetive of this is create a personal, and distro independent, environment. <br /><br />
 To keep a minimal of quality, I created and tested all my programs using the gcc's arguments; -Wall -Werror <br />
+Some warnings (like unused variables) are ignored by obviously reasons.<br />
 <br />
 
 #### Wiki and all information;
@@ -14,7 +15,17 @@ To keep a minimal of quality, I created and tested all my programs using the gcc
 -[Link in english](https://github.com/ShyanJMC/ProyectoInvierno/wiki/Terms-of-use-and-disclaimer) <br />
 
 ## Requeriments;
-The requeriments are specified in the "[How To Build](https://github.com/ShyanJMC/ProyectoInvierno/wiki/How-to-Build)" section of the wiki.
+The requeriments are specified in the "[How To Build](https://github.com/ShyanJMC/ProyectoInvierno/wiki/How-to-Build)" section of the wiki. <br />
+
+## Features;
+-Custom BASH shell. <br />
+-Independent grep and coreutils family. <br />
+-Checks at startup.<br />
+-Docker's containers; Pentesting (Parrot's repos), Tor, Privoxy and Ansible.<br />
+
+## Working Features;
+-LDAP integration.
+-Monitoring process for docker and kubernetes.
 
 ## Credits and CopyRight;
 -[ArchLinux](https://www.archlinux.org/)<br />
