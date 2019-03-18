@@ -24,8 +24,11 @@ The requeriments are specified in the "[How To Build](https://github.com/ShyanJM
 -Docker's containers; Pentesting (Parrot's repos), Tor, Privoxy and Ansible.<br />
 
 ## Working Features;
--LDAP integration.
--Monitoring process for docker and kubernetes.
+-LDAP integration. <br />
+-Monitoring process for docker and kubernetes. <br /> 
+-Script for check the last versions of kernel and systemd. <br />
+-Auto update of kernel and systemd with custom compile and gcc's argument; march=native <br />
+-NCurses interface with pseudo terminal for Invierno_Shell. <br />
 
 ## Credits and CopyRight;
 -[ArchLinux](https://www.archlinux.org/)<br />
