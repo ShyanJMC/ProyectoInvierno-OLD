@@ -65,13 +65,12 @@ int main( int first_arg, char **second_arg)
 	pthread_join(thread1, NULL);
 	pthread_join(thread2, NULL);
 	pthread_join(thread3, NULL);
-	/* pthread_join(thread4, NULL); */
+	pthread_join(thread4, NULL);
 	pthread_join(thread5, NULL);
     
 /* Execution of bash */
     printf("%s==================================================================================================\n",SWHT);
-	/* system("/var/lib/invierno/core/bash --init-file /etc/inviernorc"); */
-    	system("tmux new-session 'watch ls -l /'  \; split-window -h \; split-window -v \; attach");
+	system("/var/lib/invierno/core/bash --init-file /etc/inviernorc");
 	return 0;
 }
 
