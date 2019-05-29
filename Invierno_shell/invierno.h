@@ -34,7 +34,7 @@ Are in the order in wich the program execute.
 */
 struct Information 
 {
-	int 	core_files,
+	short 	core_files,
 		environment,
 		core_invierno_bash,
 		internal_ip_address,
@@ -43,6 +43,12 @@ struct Information
 		updated,
 		pthreads;
 }Init1;
+
+struct DockerInformation
+{
+    short   daemon,
+        containers;
+}Init2;
 
 /* The shell automatically print an error to stderr 
  * and some message to stdout. With this information
@@ -77,7 +83,7 @@ inside the Invierno's directory.
 */
 void *simple_check()
 {
-    printf("%sChecking core programs.\n",SWHT);
+	printf("%sChecking core programs.\n",SWHT);
 	Init1.core_files = system("/var/lib/invierno/core/ls . > /dev/null");
 	if (Init1.core_files != 0)
 	{
@@ -259,4 +265,17 @@ void invierno_images(){
 		}
 	}
 	return;
+}
+
+void docker_thread_check(){
+    short temporal1, temporal2;
+    
+    temporal1 = system("ps aux | grep dockerd | grep -v grep");
+    switch(temporal1){
+        case 1:
+            fprintf(stderr,"[FAIL]\tDocker's daemon not recognized in the system.\n");
+        default:
+            printf("%s[OK]\tDocker's daemon running.\n",SGRN);
+    }
+    return;
 }

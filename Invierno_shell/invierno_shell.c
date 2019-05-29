@@ -36,7 +36,7 @@ int main( int first_arg, char **second_arg)
 	system("clear");
 	printf("%sStarting Invierno.\n",SCYN);
 	printf("%sBash, Grep family and Coreutils are in GPLv3. Copy of license are under ProyectoInvierno/Licenses.\n",SGRN);
-    printf("%s==================================================================================================\n",SWHT);
+	printf("%s==================================================================================================\n",SWHT);
     
 	irthread1 = pthread_create(&thread1,NULL,simple_check, NULL);
 	if (Init1.core_files != 0)
@@ -58,7 +58,7 @@ int main( int first_arg, char **second_arg)
 	
 	irthread4 = pthread_create(&thread4,NULL, update, NULL);
     
-    irthread5 = pthread_create(&thread5, NULL, invierno_images, NULL);
+	irthread5 = pthread_create(&thread5, NULL, invierno_images, NULL);
 
 
 /* Awaiting the finish of the pthreads before start Bash in the line post comments */
@@ -70,7 +70,8 @@ int main( int first_arg, char **second_arg)
     
 /* Execution of bash */
     printf("%s==================================================================================================\n",SWHT);
-	system("/var/lib/invierno/core/bash --init-file /etc/inviernorc");
+	/* system("/var/lib/invierno/core/bash --init-file /etc/inviernorc"); */
+    	system("tmux new-session 'watch ls -l /'  \; split-window -h \; split-window -v \; attach");
 	return 0;
 }
 
