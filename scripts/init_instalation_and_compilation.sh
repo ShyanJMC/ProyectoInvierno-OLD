@@ -147,14 +147,14 @@ end(){
 }
 
 ###############################################################################################################
-welcome()
-inv_images()
-inv_configuration()
-inv_cshell()
+welcome
+inv_images
+inv_configuration
+inv_cshell
 
-inv_grep()
-inv_core_utils()
-inv_shell()
+inv_grep
+inv_core_utils
+inv_shell
 
-end()
+end
 
