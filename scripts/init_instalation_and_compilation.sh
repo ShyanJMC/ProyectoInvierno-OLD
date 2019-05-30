@@ -78,54 +78,83 @@ fi
 ####### Grep family 	need aclocal-1.99a
 ####### Because of that is needed autoreconf -f -i
 
-echo "Working...."
-echo "Making configuration files..."
-echo "All logs in /var/log/invierno_[component]"
+welcome (){
+	echo "Working...."
+	echo "Making configuration files..."
+	echo "All logs in /var/log/invierno_[component]"
+}
 
-cp $SHELLDIR/inviernorc /etc/inviernorc
-touch $INVFILE
-echo "BSH=0" >> $INVFILE
-echo "DCK=1" >> $INVFILE
+inv_configuration(){
+	cp $SHELLDIR/inviernorc /etc/inviernorc
+	touch $INVFILE
+	echo "BSH=0" >> $INVFILE
+	echo "DCK=1" >> $INVFILE
+}
 
-echo "-------------"
-echo "Compiling core utils..."
-cd $UTILSDIR
-autoreconf -i -f > /var/log/invierno_coreutils 2> /var/log/invierno_coreutils_error
-./configure > /var/log/invierno_configure_core_utils 2> /var/log/invierno_error_configure_core_utils
-make > /var/log/invierno_make_core_utils 2> /var/log/invierno_error_make_core_utils
-cd src/
-mkdir -p $COREDIR >> /var/log/invierno_coreutils 2>> /var/log/invierno_coreutils_error
-ls | grep -Ev ".h|.c|.mk|blake2|dcgen|.o" | xargs cp -t /var/lib/invierno/core
+inv_core_utils(){
+	echo "-------------"
+	echo "Compiling core utils..."
+	cd $UTILSDIR
+	autoreconf -i -f > /var/log/invierno_coreutils 2> /var/log/invierno_coreutils_error
+	./configure > /var/log/invierno_configure_core_utils 2> /var/log/invierno_error_configure_core_utils
+	make > /var/log/invierno_make_core_utils 2> /var/log/invierno_error_make_core_utils
+	cd src/
+	mkdir -p $COREDIR >> /var/log/invierno_coreutils 2>> /var/log/invierno_coreutils_error
+	ls | grep -Ev ".h|.c|.mk|blake2|dcgen|.o" | xargs cp -t /var/lib/invierno/core
+}
 
-echo "-------------"
-echo "Copying the Ivierno's Containers"
-mkdir $INVDIR/Images
-cp -r $IMAGESDIR $INVDIR
+inv_images(){
+	echo "-------------"
+	echo "Copying the Ivierno's Containers"
+	mkdir -p $INVDIR/Images
+	cp -r $IMAGESDIR $INVDIR
+}
 
-echo "-------------"
-echo "Compiling Invierno Shell"
-cd $BASHDIR
-autoreconf -i -f > /var/log/invierno_shell 2> /var/log/invierno_shell_error
-./configure > /var/log/invierno_configure_shell 2> /var/log/invierno_error_configure_shell
-make > /var/log/invierno_make_shell 2> /var/log/invierno_error_make_shell
-cp bash $COREDIR
+inv_shell(){
+	echo "-------------"
+	echo "Compiling Invierno Shell"
+	cd $BASHDIR
+	autoreconf -i -f > /var/log/invierno_shell 2> /var/log/invierno_shell_error
+	./configure > /var/log/invierno_configure_shell 2> /var/log/invierno_error_configure_shell
+	make > /var/log/invierno_make_shell 2> /var/log/invierno_error_make_shell
+	cp bash $COREDIR
+}
 
-echo "-------------"
-echo "Compiling grep"
-cd $GREPDIR
-autoreconf -i -f > /var/log/invierno_grep 2> /var/log/invierno_grep_error
-./configure > /var/log/invierno_configure_grep 2> /var/log/invierno_error_configure_grep
-make > /var/log/invierno_make_grep 2> /var/log/invierno_error_make_grep
-cp src/grep $INVDIR/core
-cp src/egrep $INVDIR/core
-cp src/fgrep $INVDIR/core
+inv_grep(){
+	echo "-------------"
+	echo "Compiling grep"
+	cd $GREPDIR
+	autoreconf -i -f > /var/log/invierno_grep 2> /var/log/invierno_grep_error
+	./configure > /var/log/invierno_configure_grep 2> /var/log/invierno_error_configure_grep
+	make > /var/log/invierno_make_grep 2> /var/log/invierno_error_make_grep
+	cp src/grep $INVDIR/core
+	cp src/egrep $INVDIR/core
+	cp src/fgrep $INVDIR/core
+}
 
-echo "-------------"
-echo "Compiling shell....."
-cd $SHELLDIR
-gcc -march=native -lpthread invierno_shell.c -o invierno_shell > /var/log/invierno_shell_launcher 2> /var/lib/invierno_shell_launcher_error
-cp invierno_shell /bin/
+inv_cshell(){
+	echo "-------------"
+	echo "Compiling shell....."
+	cd $SHELLDIR
+	gcc -march=native -lpthread invierno_shell.c -o invierno_shell > /var/log/invierno_shell_launcher 2> /var/lib/invierno_shell_launcher_error
+	cp invierno_shell /bin/
+}
 
-echo
-echo "Done. ProyectoInvierno compiled and installed."
-echo "For errors, check the logs in; /var/log/invierno_[component]"
+end(){
+	echo
+	echo "Done. ProyectoInvierno compiled and installed."
+	echo "For errors, check the logs in; /var/log/invierno_[component]"
+}
+
+###############################################################################################################
+welcome()
+inv_images()
+inv_configuration()
+inv_cshell()
+
+inv_grep()
+inv_core_utils()
+inv_shell()
+
+end()
+
