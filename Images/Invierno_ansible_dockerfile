@@ -1,0 +1,18 @@
+FROM fedora:latest
+
+###### Environment stage
+ENV	inviernostate="1"
+
+
+###### RUN stage
+RUN 	yum update -y ; \
+	yum install -y 	ansible \
+			openssh-server \
+			curl \
+			wget ; \
+	yum clean all ; \
+	rm -rf /var/cache/yum
+
+##### LABEL stage
+
+LABEL packages=" ansible ssh curl wget "
