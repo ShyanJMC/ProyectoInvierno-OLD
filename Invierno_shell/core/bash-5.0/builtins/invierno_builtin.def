@@ -1,0 +1,49 @@
+This file is invierno_builtin.def, from which is created invierno_builtin.c.
+It implements the builtin "inv_builtin" in Bash.
+
+Copyright (C) 1987-2017 Free Software Foundation, Inc. \
+Copyright (C) 2019 Joaquin Manuel Crespo
+
+This file is part of GNU Bash, the Bourne Again Shell.
+This file is part of Invierno_Shell, the ProyectoInvierno Shell.
+
+Bash is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Bash is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Bash.  If not, see <http://www.gnu.org/licenses/>.
+
+$BUILTIN inv_builtin
+$FUNCTION invierno_builtin
+$PRODUCES invierno_builtin.c
+$SHORT_DOC 
+This program go to /var/lib/invierno/builtin and load all programs as 
+builtins.
+$END
+
+$BUILTIN inv_builtin
+$FUNCTION invierno_builtin
+
+$SHORT_DOC 
+This program fo to /var/lib/invierno/builtin and load all programs as
+builtins.
+$END
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int invierno_builtin(list)
+	WORD_LIST *list;
+{
+	fprintf(stdin, "Listening internal builtins");
+	system("enable -a");
+	
+}
