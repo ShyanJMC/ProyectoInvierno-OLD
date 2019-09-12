@@ -46,6 +46,7 @@ TMUXDIR=$WORKDIR/Invierno_shell/core/tmux
 MOBY=$WORKDIR/Invierno_shell/core/moby/
 INVDIR=/var/lib/invierno
 INVFILE=/etc/invierno
+INVBUILT=$INVDIR/builtin
 COREDIR=$INVDIR/core
 
 #### System
@@ -146,8 +147,14 @@ end(){
 	echo "For errors, check the logs in; /var/log/invierno_[component]"
 }
 
+inv_builtin(){
+	mkdir -p $INVBUILT
+
+}
+
 ###############################################################################################################
 welcome
+inv_builtin
 inv_images
 inv_configuration
 inv_cshell
