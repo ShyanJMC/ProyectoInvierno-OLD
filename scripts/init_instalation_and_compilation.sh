@@ -40,12 +40,13 @@ WORKDIR=~/ProyectoInvierno
 IMAGESDIR=$WORKDIR/Images
 SHELLDIR=$WORKDIR/Invierno_shell
 UTILSDIR=$WORKDIR/Invierno_shell/core/coreutils-8.30/
-BASHDIR=$WORKDIR/Invierno_shell/core/bash-4.4.18/
+BASHDIR=$WORKDIR/Invierno_shell/core/bash-5.0/
 GREPDIR=$WORKDIR/Invierno_shell/core/grep-3.1/
 TMUXDIR=$WORKDIR/Invierno_shell/core/tmux
 MOBY=$WORKDIR/Invierno_shell/core/moby/
 INVDIR=/var/lib/invierno
 INVFILE=/etc/invierno
+INVBUILT=$INVDIR/builtin
 COREDIR=$INVDIR/core
 
 #### System
@@ -146,8 +147,14 @@ end(){
 	echo "For errors, check the logs in; /var/log/invierno_[component]"
 }
 
+inv_builtin(){
+	mkdir -p $INVBUILT
+
+}
+
 ###############################################################################################################
 welcome
+inv_builtin
 inv_images
 inv_configuration
 inv_cshell
