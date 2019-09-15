@@ -44,6 +44,6 @@ int invierno_builtin(list)
 	WORD_LIST *list;
 {
 	fprintf(stdin, "Listening internal builtins");
-	system("enable -a");
-	
+	system("enable -a > /var/log/invierno_internal_builtins.log");
+	return 0;	
 }
