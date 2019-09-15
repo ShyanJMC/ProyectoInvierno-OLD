@@ -129,7 +129,7 @@ char *current_host_name = (char *)NULL;
   -1 = login shell from "--login" (or -l) flag.
   -2 = both from getty, and from flag.
  */
-int login_shell = -1;
+int login_shell = 0;
 
 /* Non-zero means that at this moment, the shell is interactive.  In
    general, this means that the shell is at this moment reading input
@@ -147,7 +147,7 @@ int hup_on_exit = 0;
 int check_jobs_at_exit = 0;
 
 /* Non-zero means to change to a directory name supplied as a command name */
-int autocd = 1;
+int autocd = 0;
 
 /* Tells what state the shell was in when it started:
 	0 = non-interactive shell script
@@ -191,7 +191,7 @@ int have_devfd = 0;
 #endif
 
 /* The name of the .(shell)rc file. */
-static char *bashrc_file = "/etc/inviernorc";
+static char *bashrc_file = DEFAULT_BASHRC;
 
 /* Non-zero means to act more like the Bourne shell on startup. */
 static int act_like_sh;
@@ -1736,7 +1736,31 @@ static void
 set_shell_name (argv0)
      char *argv0;
 {
-    shell_name = "Invierno Shell"; 
+  /* Here's a hack.  If the name of this shell is "sh", then don't do
+     any startup files; just try to be more like /bin/sh. */
+  shell_name = argv0 ? base_pathname (argv0) : PROGRAM;
+
+  if (argv0 && *argv0 == '-')
+    {
+      if (*shell_name == '-')
+	shell_name++;
+      login_shell = 1;
+    }
+
+  if (shell_name[0] == 's' && shell_name[1] == 'h' && shell_name[2] == '\0')
+    act_like_sh++;
+  if (shell_name[0] == 's' && shell_name[1] == 'u' && shell_name[2] == '\0')
+    su_shell++;
+
+  shell_name = argv0 ? argv0 : PROGRAM;
+  FREE (dollar_vars[0]);
+  dollar_vars[0] = savestring (shell_name);
+
+  /* A program may start an interactive shell with
+	  "execl ("/bin/bash", "-", NULL)".
+     If so, default the name of this shell to our name. */
+  if (!shell_name || !*shell_name || (shell_name[0] == '-' && !shell_name[1]))
+    shell_name = PROGRAM;
 }
 
 static void
@@ -1928,7 +1952,7 @@ shell_reinitialize ()
 
   /* Ensure that the default startup file is used.  (Except that we don't
      execute this file for reinitialized shells). */
-  bashrc_file = "/etc";
+  bashrc_file = DEFAULT_BASHRC;
 
   /* Delete all variables and functions.  They will be reinitialized when
      the environment is parsed. */
@@ -1953,7 +1977,7 @@ show_shell_usage (fp, extra)
   char *set_opts, *s, *t;
 
   if (extra)
-    fprintf (fp, _("Invierno Shell from GNU bash, version %s-(%s)\n"), shell_version_string (), MACHTYPE);
+    fprintf (fp, _("GNU bash, version %s-(%s)\n"), shell_version_string (), MACHTYPE);
   fprintf (fp, _("Usage:\t%s [GNU long option] [option] ...\n\t%s [GNU long option] [option] script-file ...\n"),
 	     shell_name, shell_name);
   fputs (_("GNU long options:\n"), fp);
@@ -1990,7 +2014,6 @@ show_shell_usage (fp, extra)
       fprintf (fp, _("Type `%s -c help' for more information about shell builtin commands.\n"), shell_name);
       fprintf (fp, _("Use the `bashbug' command to report bugs.\n"));
       fprintf (fp, "\n");
-      fprintf (fp, _("Invierno Project webpage: <http://www.shyanjmc.com>\n"));
       fprintf (fp, _("bash home page: <http://www.gnu.org/software/bash>\n"));
       fprintf (fp, _("General help using GNU software: <http://www.gnu.org/gethelp/>\n"));
     }

@@ -43,7 +43,7 @@ const char * const release_status = (char *)0;
 #endif
 const char * const sccs_version = SCCSVERSION;
 
-const char * const bash_copyright = N_("Copyright (C) 2019 Free Software Foundation, Inc.\n Copyright (C) 2019 Joaquin Manuel Crespo.\n");
+const char * const bash_copyright = N_("Copyright (C) 2019 Free Software Foundation, Inc.");
 const char * const bash_license = N_("License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n");
 
 /* If == 31, shell compatible with bash-3.1, == 32 with bash-3.2, and so on */
@@ -83,7 +83,7 @@ void
 show_shell_version (extended)
      int extended;
 {
-  printf (_("Invierno Shell from GNU bash, version %s (%s)\n"), shell_version_string (), MACHTYPE);
+  printf (_("GNU bash, version %s (%s)\n"), shell_version_string (), MACHTYPE);
   if (extended)
     {
       printf ("%s\n", _(bash_copyright));
