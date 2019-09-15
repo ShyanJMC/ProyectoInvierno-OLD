@@ -15,4 +15,10 @@ rm -rf /bin/invierno_shell
 #############################
 echo
 echo
-echo "Clean done."
+echo "Clean files done."
+echo "Cleaning environment."
+
+ENVIRONMENT=~/ProyectoInvierno/Invierno_shell/core/
+cd $ENVIRONMENT/bash-5.0 && make clean
+cd $ENVIRONMENT/coreutils-8.30 && make clean
+cd $ENVIRONMENT/grep-3.1 && make clean

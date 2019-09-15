@@ -115,7 +115,6 @@ inv_shell(){
 	echo "-------------"
 	echo "Compiling Invierno Shell"
 	cd $BASHDIR
-	autoreconf -i -f > /var/log/invierno_shell 2> /var/log/invierno_shell_error
 	./configure > /var/log/invierno_configure_shell 2> /var/log/invierno_error_configure_shell
 	make > /var/log/invierno_make_shell 2> /var/log/invierno_error_make_shell
 	cp bash $COREDIR
@@ -159,8 +158,8 @@ inv_images
 inv_configuration
 inv_cshell
 
-inv_grep
 inv_core_utils
+inv_grep
 inv_shell
 
 end
