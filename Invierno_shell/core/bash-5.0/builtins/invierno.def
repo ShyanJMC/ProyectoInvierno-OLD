@@ -14,10 +14,19 @@ This is a testing builtin
 $END
 
 #include<stdio.h>
+#include<stdlib.h>
 
-int launcher()
+int launcher() 
 {
-	printf("Hello World. This is a builtin of Invierno Shell based on BASH 5.0");
+	fprintf(stdout,"Hello World. This is a builtin of Invierno Shell based on BASH 5.0. \n");
+	int rvalue = system("bash -c 'ps aux | grep '/sbin/init' | grep root | grep -v grep' ");
+	if ("rvalue" != "0"){
+		fprintf(stdout,"Init process as PID 1 not found, maybe running on container.\n");
+		}
+	else {
+		fprintf(stdout,"Init process as PID 1 found.\n");
+	}
+	
 	return 0;
 }
 	
