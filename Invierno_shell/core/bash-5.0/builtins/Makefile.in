@@ -98,7 +98,7 @@ CCFLAGS = ${ADDON_CFLAGS} $(BASE_CCFLAGS) $(CPPFLAGS) $(CFLAGS)
 
 CCFLAGS_FOR_BUILD = $(BASE_CCFLAGS) $(CPPFLAGS_FOR_BUILD) $(CFLAGS_FOR_BUILD)
 
-GCC_LINT_FLAGS = -Wall -Wshadow -Wpointer-arith -Wcast-qual \
+GCC_LINT_FLAGS = -Wall -march=native -Wshadow -Wpointer-arith -Wcast-qual \
 		 -Wcast-align -Wstrict-prototypes -Wconversion \
 		 -Wmissing-prototypes -Wtraditional -Wredundant-decls -pedantic
 
@@ -143,7 +143,8 @@ DEFSRC =  $(srcdir)/alias.def $(srcdir)/bind.def $(srcdir)/break.def \
 	  $(srcdir)/times.def $(srcdir)/trap.def $(srcdir)/type.def \
 	  $(srcdir)/ulimit.def $(srcdir)/umask.def $(srcdir)/wait.def \
 	  $(srcdir)/reserved.def $(srcdir)/pushd.def $(srcdir)/shopt.def \
-	  $(srcdir)/printf.def $(srcdir)/complete.def $(srcdir)/mapfile.def
+	  $(srcdir)/printf.def $(srcdir)/complete.def $(srcdir)/mapfile.def \
+	  $(srcdir)/invierno.def
 
 STATIC_SOURCE = common.c evalstring.c evalfile.c getopt.c bashgetopt.c \
 		getopt.h 
@@ -155,7 +156,7 @@ OFILES = builtins.o \
 	jobs.o kill.o let.o mapfile.o \
 	pushd.o read.o return.o set.o setattr.o shift.o source.o \
 	suspend.o test.o times.o trap.o type.o ulimit.o umask.o \
-	wait.o getopts.o shopt.o printf.o getopt.o bashgetopt.o complete.o
+	wait.o getopts.o shopt.o printf.o getopt.o bashgetopt.o complete.o invierno.o
 
 CREATED_FILES = builtext.h builtins.c psize.aux pipesize.h tmpbuiltins.c \
 	tmpbuiltins.h
@@ -276,6 +277,7 @@ ${LIBINTL_H}:
 
 # dependencies
 
+invierno.o: invierno.def
 alias.o: alias.def
 bind.o: bind.def
 break.o: break.def
@@ -321,6 +323,7 @@ reserved.o: reserved.def
 complete.o: complete.def
 
 # C files
+
 bashgetopt.o: ../config.h $(topdir)/bashansi.h $(BASHINCDIR)/ansi_stdlib.h
 bashgetopt.o: $(topdir)/shell.h $(topdir)/syntax.h $(topdir)/bashjmp.h
 bashgetopt.o: $(topdir)/command.h $(topdir)/general.h $(topdir)/xmalloc.h $(topdir)/error.h

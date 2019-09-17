@@ -1,0 +1,24 @@
+This file is invierno_builtin.def and is part of ProyectoInvierno.
+Invierno Shell is based on GNU Bash (Bourne Again Shell).
+
+As part of GPLv3 specifications, the source code of the program is distributed.
+In "changes_gnu" are the changes applied to GNU Bash using the latest version available in official way).
+
+Copyright (C) - 2019 Joaquin Manuel Crespo (aka "ShyanJMC").
+
+$BUILTIN invierno
+$FUNCTION main
+$PRODUCES invierno.c
+$SHORT_DOC invierno [none]
+This is a testing builtin
+$END
+
+#include<stdio.h>
+
+int main(list) 
+{
+	printf("Hello World. This is a builtin of Invierno Shell based on BASH 5.0");
+	return 0;
+}
+	
+
