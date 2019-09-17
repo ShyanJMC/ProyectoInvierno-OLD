@@ -7,7 +7,7 @@ In "changes_gnu" are the changes applied to GNU Bash using the latest version av
 Copyright (C) - 2019 Joaquin Manuel Crespo (aka "ShyanJMC").
 
 $BUILTIN invierno
-$FUNCTION main
+$FUNCTION launcher
 $PRODUCES invierno.c
 $SHORT_DOC invierno [none]
 This is a testing builtin
@@ -15,7 +15,7 @@ $END
 
 #include<stdio.h>
 
-int main(list) 
+int launcher()
 {
 	printf("Hello World. This is a builtin of Invierno Shell based on BASH 5.0");
 	return 0;
