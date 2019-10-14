@@ -22,10 +22,8 @@ The requeriments are specified in the "[How To Build](https://github.com/ShyanJM
 
 ## Features;
 -Custom BASH shell. <br />
--Portainer CE container for Docker web administration <br />
 -Independent grep and coreutils family. <br />
 -Checks at startup.<br />
--Docker's containers; Portainer CE, Pentesting (Parrot's repos), Tor, Privoxy and Ansible.<br />
 
 ## Credits and CopyRight;
 -[ArchLinux](https://www.archlinux.org/)<br />
