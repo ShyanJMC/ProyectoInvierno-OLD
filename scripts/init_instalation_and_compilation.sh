@@ -58,7 +58,8 @@ echo "Installing dependencies for compile and install ProyectoInvierno"
 echo "The logs will be init_proyectoinvierno and init_proyectoinvierno_error"
 echo
 
-apt install -y build-essentials texinfo bison automake gcc make dh-autoreconf libevent-dev libncurses5-dev pkg-config > init_proyectoinvierno 2> init_proyectoinvierno_error 
+apt update -y && apt upgrade -y && \ 
+	apt install -y build-essentials texinfo bison automake gcc make dh-autoreconf libevent-dev libncurses5-dev pkg-config > init_proyectoinvierno 2> init_proyectoinvierno_error 
 
 echo 
 ###########################################################
@@ -135,7 +136,6 @@ inv_builtin(){
 ###############################################################################################################
 welcome
 inv_builtin
-inv_images
 inv_configuration
 inv_cshell
 
