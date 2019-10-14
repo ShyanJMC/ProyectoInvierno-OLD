@@ -37,13 +37,11 @@ export FORCE_UNSAFE_CONFIGURE=1
 #### Variables for compile and crate
 
 WORKDIR=~/ProyectoInvierno
-IMAGESDIR=$WORKDIR/Images
 SHELLDIR=$WORKDIR/Invierno_shell
 UTILSDIR=$WORKDIR/Invierno_shell/core/coreutils-8.30/
 BASHDIR=$WORKDIR/Invierno_shell/core/bash-5.0/
 GREPDIR=$WORKDIR/Invierno_shell/core/grep-3.1/
 TMUXDIR=$WORKDIR/Invierno_shell/core/tmux
-MOBY=$WORKDIR/Invierno_shell/core/moby/
 INVDIR=/var/lib/invierno
 INVFILE=/etc/invierno
 INVBUILT=$INVDIR/builtin
@@ -102,13 +100,6 @@ inv_core_utils(){
 	cd src/
 	mkdir -p $COREDIR >> /var/log/invierno_coreutils 2>> /var/log/invierno_coreutils_error
 	ls | grep -Ev ".h|.c|.mk|blake2|dcgen|.o" | xargs cp -t /var/lib/invierno/core
-}
-
-inv_images(){
-	echo "-------------"
-	echo "Copying the Ivierno's Containers"
-	mkdir -p $INVDIR/Images
-	cp -r $IMAGESDIR $INVDIR
 }
 
 inv_shell(){
