@@ -11,12 +11,6 @@ THIS PROGRAM INTEGRATE THREE SOFTWARE FROM GNU PROJECT UNDER Invierno_shell/core
 #### Wiki and all information;
 [Invierno's Wiki](https://github.com/ShyanJMC/ProyectoInvierno/wiki)
 
-#### Escepcion de responsabilidad y terminos de uso para los containers.
--[Link en español](https://github.com/ShyanJMC/ProyectoInvierno/wiki/Condiciones-de-uso-y-escepcion-de-responsabilidad) <br />
- 
-#### Disclaimer and terms of use.
--[Link in english](https://github.com/ShyanJMC/ProyectoInvierno/wiki/Terms-of-use-and-disclaimer) <br />
-
 ## Requeriments;
 The requeriments are specified in the "[How To Build](https://github.com/ShyanJMC/ProyectoInvierno/wiki/How-to-Build)" section of the wiki. <br />
 
