@@ -5,6 +5,7 @@ RUN	apt update && apt upgrade -y && \
 	mkdir -p /root/ProyectoInvierno/
 
 ADD	Invierno_source_code/	/root/ProyectoInvierno/
-RUN	chmod +x /root/ProyectoInvierno/scripts/*
+RUN	chmod +x /root/ProyectoInvierno/scripts/* && \
+	/bin/bash -c /root/ProyectoInvierno/scripts/init_instalation_and_compilation.sh 
 
-CMD	["bash -c /root/ProyectoInvierno/scripts/init_instalation_and_compilation.sh"]
+CMD	["/bin/invierno_shell"]

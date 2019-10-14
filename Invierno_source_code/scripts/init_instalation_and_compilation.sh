@@ -56,12 +56,9 @@ COREDIR=$INVDIR/core
 
 echo "Installing dependencies for compile and install ProyectoInvierno"
 echo "The logs will be init_proyectoinvierno and init_proyectoinvierno_error"
-echo
 
-apt update -y && apt upgrade -y && \ 
-	apt install -y build-essentials texinfo bison automake gcc make dh-autoreconf libevent-dev libncurses5-dev pkg-config > init_proyectoinvierno 2> init_proyectoinvierno_error 
+apt install -y build-essential texinfo bison automake gcc make dh-autoreconf libevent-dev libncurses5-dev pkg-config > init_proyectoinvierno 2> init_proyectoinvierno_error 
 
-echo 
 ###########################################################
 ####### Bash 		need aclocal-1.14
 ####### Coreutils 	need aclocal-1.15
