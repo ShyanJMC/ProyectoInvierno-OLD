@@ -58,19 +58,9 @@ echo "Installing dependencies for compile and install ProyectoInvierno"
 echo "The logs will be init_proyectoinvierno and init_proyectoinvierno_error"
 echo
 
-if	[ "$1" == "Debian" ];	then
-	apt install -y build-essentials texinfo bison automake gcc make dh-autoreconf libevent-dev libncurses5-dev pkg-config > init_proyectoinvierno 2> init_proyectoinvierno_error 
-	echo "SYS=deb" >> /etc/invierno
-elif	[ "$1" == "RedHat" ];	then
-	yum groupinstall -y "Development Tools" > init_proyectoinvierno 2> init_proyectoinvierno_error
-	echo "SYS=red" >> /etc/invierno
-elif	[ "$1" == "Gentoo" ];	then
-	emerge sys-apps/texinfo sys-devel/bison sys-devel/automake sys-devel/make > init_proyectoinvierno 2> init_proyectoinvierno_error
-	echo "SYS=gen" >> /etc/invierno
-elif	[ "$1" == "Arch" ];	then
-	yes | pacman -S bison texinfo automake gcc make > init_proyectoinvierno 2> init_proyectoinvierno_error
-	echo "SYS=arc" >> /etc/invierno
-fi 
+apt install -y build-essentials texinfo bison automake gcc make dh-autoreconf libevent-dev libncurses5-dev pkg-config > init_proyectoinvierno 2> init_proyectoinvierno_error 
+
+echo 
 ###########################################################
 ####### Bash 		need aclocal-1.14
 ####### Coreutils 	need aclocal-1.15
