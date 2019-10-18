@@ -149,28 +149,6 @@ void *docker_init()
 	}
 	return;
 }
-/*
-
-/*
-Checks docker and start it.
-After a successful start, check the configuration
-*/
-void *docker_internal_init ()
-{
-    short temporal, temporal2;
-    printf("%sEnabling and starting docker.\n",SWHT);
-    temporal = system("systemctl start docker > /dev/null && systemctl enable docker > /dev/null");
-    if (temporal != 0)
-    {
-        fprintf(stderr,"%s[FAIL]\tDocker start error.\n",SRED);
-        Init1.docker = 1;
-    }
-    else
-    {
-	docker_init();
-        }
-	return;
-}
 
 /*
 Upgrade the system.
@@ -282,14 +260,26 @@ void invierno_images(){
 }
 
 void docker_thread_check(){
-    short temporal1, temporal2;
-    
-    temporal1 = system("ps aux | grep dockerd | grep -v grep");
-    switch(temporal1){
-        case 1:
-            fprintf(stderr,"[FAIL]\tDocker's daemon not recognized in the system.\n");
-        default:
-            printf("%s[OK]\tDocker's daemon running.\n",SGRN);
-    }
-    return;
+   short temporal1, temporal2;
+   int childp;
+   childp = fork();
+   switch(childp) {
+	   case 0: {
+	   	char *check[]={"ps","aux","|","grep","dockerd","|","grep","-v","grep",NULL};
+		temporal1 = execvp(check[0],check);
+		switch(temporal1){
+        		case 1:
+            			fprintf(stderr,"[FAIL]\tDocker's daemon not recognized in the system.\n");
+        		default:
+            			printf("%s[OK]\tDocker's daemon running.\n",SGRN);
+    		}
+		   }
+	   case 1: {
+			   fprintf(stderr,"Fail to fork process");
+		   }
+	   default:{
+		   }
+   }
+    		return;
+
 }

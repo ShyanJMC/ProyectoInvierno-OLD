@@ -31,8 +31,8 @@ Execute the functions in poxis threads and check the return of the same.
 */
 int main( int first_arg, char **second_arg)
 {
-	pthread_t thread1, thread2, thread3, thread4, thread5;
-	int	  irthread1, irthread2, irthread3, irthread4, irthread5;
+	pthread_t thread1, thread2, thread3, thread4, thread5, thread6;
+	int	  irthread1, irthread2, irthread3, irthread4, irthread5, irthread6;
 	system("clear");
 	printf("%sStarting Invierno.\n",SCYN);
 	printf("%sBash, Grep family and Coreutils are in GPLv3. Copy of license are under ProyectoInvierno/Licenses.\n",SGRN);
@@ -50,23 +50,16 @@ int main( int first_arg, char **second_arg)
 		return 1;
 	}
 	
-	irthread3 = pthread_create(&thread3,NULL,docker_internal_init,NULL);
-	if (Init1.docker != 0)
-	{
-		return 1;
-	}
-	
 	irthread4 = pthread_create(&thread4,NULL, update, NULL);
-    
 	irthread5 = pthread_create(&thread5, NULL, invierno_images, NULL);
-
+	irthread6 = pthread_create(&thread6, NULL, docker_thread_check, NULL); 
 
 /* Awaiting the finish of the pthreads before start Bash in the line post comments */
 	pthread_join(thread1, NULL);
 	pthread_join(thread2, NULL);
-	pthread_join(thread3, NULL);
 	pthread_join(thread4, NULL);
 	pthread_join(thread5, NULL);
+	pthread_join(thread6, NULL);
     
 /* Execution of bash */
     printf("%s==================================================================================================\n",SWHT);

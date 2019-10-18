@@ -8,27 +8,29 @@ THIS PROGRAM INTEGRATE THREE SOFTWARE FROM GNU PROJECT UNDER Invierno_shell/core
 
 <br />
 
-#### Wiki and all information;
-[Invierno's Wiki](https://github.com/ShyanJMC/ProyectoInvierno/wiki)
-
-#### Escepcion de responsabilidad y terminos de uso para los containers.
--[Link en español](https://github.com/ShyanJMC/ProyectoInvierno/wiki/Condiciones-de-uso-y-escepcion-de-responsabilidad) <br />
-
-#### Disclaimer and terms of use.
--[Link in english](https://github.com/ShyanJMC/ProyectoInvierno/wiki/Terms-of-use-and-disclaimer) <br />
+#### How to run;
+- git clone https://www.github.com/ShyanJMC/ProyectoInvierno && cd ProyectoInvierno &&docker build -t proyectoinvierno:0.0.3 . 
+<br />
+<br />
+Then start the container with; <br/>
+- docker run -ti -v /var/run/docker.sock:/var/run/docker.sock proyectoinvierno:0.0.3
+<br />
+<br />
+Remember, the hostname is the ID of your container.
 
 ## Requeriments;
-The requeriments are specified in the "[How To Build](https://github.com/ShyanJMC/ProyectoInvierno/wiki/How-to-Build)" section of the wiki. <br />
+- Docker in your computer where you will run this.
 
 ## Features;
--Custom BASH shell. <br />
--Independent grep and coreutils family. <br />
--Checks at startup.<br />
+- Custom BASH shell.
+- Independent grep and coreutils family under "/var/lib/invierno/core".
+- Upgrade the container at startup.
+- Containers management (working on this actually).
 
 ## Credits and CopyRight;
--[ArchLinux](https://www.archlinux.org/)<br />
--[Docker](https://www.docker.com/) <br />
--[Moby](https://mobyproject.org/) <br />
--[GNU](https://www.gnu.org/)<br />
--[Roy's Place](https://roy.marples.name/)<br />
--[Parrot Linux Security](https://www.parrotsec.org/)<br />
+- [ArchLinux](https://www.archlinux.org/)
+- [Docker](https://www.docker.com/)
+- [Moby](https://mobyproject.org/)
+- [GNU](https://www.gnu.org/)
+- [Roy's Place](https://roy.marples.name/)
+- [Parrot Linux Security](https://www.parrotsec.org/)

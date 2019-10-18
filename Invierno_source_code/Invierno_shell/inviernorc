@@ -21,7 +21,7 @@
 alias ls='ls --color=auto'
 alias ll='ls -la --color=auto'
 alias la='ls -la --color=auto'
-
+alias windows='echo "WHAT ? ARE YOU CRAZY, MEN!"'
 
 PS1='[Invierno Return: $(echo $?)][\u@\h \W]\$ '
 cd ~
