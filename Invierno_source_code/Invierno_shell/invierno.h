@@ -66,7 +66,7 @@ struct DockerInformation
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
+#include<unistd.h>
 /*
  * Poxis Thread Librarie.
  */
@@ -180,20 +180,34 @@ the last security updates.
 
 void *update()
 {
-	short buffer;
+	int childp;
+	short buffer1, buffer2;
 	printf("%sUpdating the system.\n",SWHT);
-	buffer = system("su -c 'yes | pacman -Syu' > /dev/null 2> /dev/null");
-	if (buffer != 0)
-	{
-		fprintf(stderr,"%s[FAIL]\tError to update the system.\n",SRED);
-		Init1.updated = 1;
+	const char *aptupd[]={"/usr/bin/apt","update",NULL};
+	const char *aptupg[]={"/usr/bin/apt","upgrade","-y",NULL};
+	childp = fork();
+	switch(childp){
+		 case 0:{
+		 	 buffer1 = execvp(aptupd[0],aptupd);
+			 buffer2 = execvp(aptupg[0],aptupg);
+			 if (buffer1 != 0){
+				 fprintf(stderr,"%s[FAIL]\tError to update the system.\n",SRED);
+				 Init1.updated = 1;
+			 }
+			 else 
+			 {
+				 printf("%s\n[OK]\tSystem updated.\n",SWHT);
+				 Init1.updated = 0;
+				 }
+			 return 0;
+			}
+		 case 1:{
+				fprintf(stderr, "Failed to fork process");
+			}
+		 default:{
+			 }
 	}
-	else 
-	{
-		printf("%s\n[OK]\tSystem updated.\n",SWHT);
-		Init1.updated = 0;
-	}
-	return;
+	 return;
 }
 
 /* Build the images of docker */
