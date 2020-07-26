@@ -1,5 +1,5 @@
 # ProyectoInvierno
-THIS PROYECT WAS MOVE TO THE NEW REPO, WITH THE SAME NEW. BUT NOW WILL WORK WITH RUST FROM SCRATCH.
+# THIS PROYECT WAS MOVE TO THE NEW REPO, WITH THE SAME NAME BUT NOW WILL WORK WITH RUST FROM SCRATCH.<br /><br /> 
 
 
 This is personal project for docker's containers, and a custom shell for manage specific containers. <br /><br />
