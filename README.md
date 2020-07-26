@@ -1,4 +1,7 @@
 # ProyectoInvierno
+THIS PROYECT WAS MOVE TO THE NEW REPO, WITH THE SAME NEW. BUT NOW WILL WORK WITH RUST FROM SCRATCH.
+
+
 This is personal project for docker's containers, and a custom shell for manage specific containers. <br /><br />
 The objetive of this is create a personal, and distro independent, environment. <br /><br />
 To keep a minimal of quality, I created and tested all my programs using the gcc's arguments; -Wall -Werror <br />
